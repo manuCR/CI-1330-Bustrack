@@ -1,0 +1,142 @@
+<div style="background:#FF0000;margin-bottom:0px;border-width:5px;border-style:double;border-radius: 15px;border-top-left-radius: 10px;font-family:Book Antiqua; width:100%;height: 75px;color:#ffffff" xmlns="http://www.w3.org/1999/html">
+
+  <h2 style="margin-left: 15px"><strong>BUS TRACK</strong></h2>
+  <p style="margin-left: 15px;font-family: Brush Script MT;"><i><font size="4">Que no te deje el bus</font></i></p>
+
+</div>
+
+<!--<table>-->
+  <!--<thead>-->
+    <!--<tr>-->
+      <!--<th colspan="3"></th>-->
+    <!--</tr>-->
+  <!--</thead>-->
+
+  <!--<tbody>-->
+    <!--<% @holas.each do |hola| %>-->
+      <!--<tr>-->
+        <!--<td><%= link_to 'Show', hola %></td>-->
+        <!--<td><%= link_to 'Edit', edit_hola_path(hola) %></td>-->
+        <!--<td><%= link_to 'Destroy', hola, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+      <!--</tr>-->
+    <!--<% end %>-->
+  <!--</tbody>-->
+<!--</table>-->
+
+
+
+
+<style>
+
+    html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        background: #495054;
+        color: #38a9e3;
+
+    }
+    #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+
+
+    }
+</style>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script>
+    var directionsDisplay;
+    var directionsService = new google.maps.DirectionsService();
+    var map;
+
+    // Initialize esta funcion coloca el mapa en la posicion de nuestra preferencia Latitud Longuitud y ademas podemos agregar el zoom incial
+    function initialize() {
+        directionsDisplay = new google.maps.DirectionsRenderer();
+        var san_jose = new google.maps.LatLng(9.9333333, -84.0833333);
+        var mapOptions = {
+            zoom: 10,
+            center: san_jose
+        }
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        directionsDisplay.setMap(map);
+    }
+
+    //aqui lo que se hace es montar las direcciones entre paradas ademas de dibujar las rutas
+    function calcRoute() {
+        var start = document.getElementById('start').value;
+        var end = document.getElementById('end').value;
+        var waypts = [];
+        var checkboxArray = document.getElementById('waypoints');
+//en este for se verifican las opciones marcadas de las paradas y se agreagan a la variable waypts
+        for (var i = 0; i < checkboxArray.length; i++) {
+            if (checkboxArray.options[i].selected == true) {
+                waypts.push({
+                    location:checkboxArray[i].value,
+                    stopover:true});
+            }
+        }
+//var request es la variable mas importante ya que en ella se colocan el principio y el final de las rutas ademas de que los waypts que en nuestro caso lo veria como paradas
+        var request = {
+            origin: start,
+            destination: end,
+            waypoints: waypts,
+            optimizeWaypoints: false,
+            travelMode: google.maps.TravelMode.DRIVING
+        };
+//aque se llama al metodo para dibujar el mapa
+        directionsService.route(request, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+                var route = response.routes[0];
+                var summaryPanel = document.getElementById('directions_panel');
+                summaryPanel.innerHTML = '';
+                // For each route, display summary information.
+                for (var i = 0; i < route.legs.length; i++) {
+                    var routeSegment = i + 1;
+                    summaryPanel.innerHTML += '<b>Segmento de ruta: ' + routeSegment + '</b><br>';
+                    summaryPanel.innerHTML += route.legs[i].start_address + ' hacia ';
+                    summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+                    summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+                }
+            }
+        });
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+    //En este script se le colocan las variables start waypoint y end con estas se llenara request en el funcion calcroute que es llamada cuando le hacemo submit
+    // Para HTML5 Encontre esta pagina que funciona bastante bien
+</script>
+
+<div id="map-canvas" style="float:left;width:70%;height:100%;"></div>
+<div id="control_panel" style="float:right;width:30%;text-align:left;padding-top:20px">
+  <div style="margin:20px;border-width:2px;">
+    <b>Start:</b>
+    <select id="start">
+      <option value="9.920974, -84.103341">Hatillo</option>
+    </select>
+    <br>
+    <b>Waypoints:</b> <br>
+    <i>(Ctrl-Click for multiple selection)</i> <br>
+    <select multiple id="waypoints">
+      <option value="9.918549,-84.104548">Parada0</option>
+      <option value="9.913507,-84.103476">Parada1</option>
+      <option value="9.915801,-84.102586">Parada2</option>
+      <option value="9.939051,-84.051768">Parada3</option>
+    </select>
+    <br>
+    <b>End:</b>
+    <select id="end">
+      <option value="9.935149,-84.051142">UCR</option>
+    </select>
+    <br>
+    <input type="submit" onclick="calcRoute();">
+  </div>
+  <div id="directions_panel" style="margin:20px;background-color:#FFEE77;"></div>
+</div>
+

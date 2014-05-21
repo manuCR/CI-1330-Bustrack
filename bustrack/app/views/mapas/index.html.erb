@@ -28,7 +28,10 @@
 
     }
 </style>
+<script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+
 <script>
     var directionsDisplay;
     var directionsService = new google.maps.DirectionsService();
@@ -118,4 +121,32 @@
   </div>
   <div id="directions_panel" style="margin:20px;background-color:#FFEE77;"></div>
 </div>
+
+
+
+
+
+
+    <div id='messagesDiv'></div>
+    <input type='text' id='nameInput' placeholder='Name'>
+    <input type='text' id='messageInput' placeholder='Message'>
+    <script>
+      var myDataRef = new Firebase('https://blazing-fire-9075.firebaseio.com/');
+      $('#messageInput').keypress(function (e) {
+        if (e.keyCode == 13) {
+          var name = $('#nameInput').val();
+          var text = $('#messageInput').val();
+          myDataRef.push({name: name, text: text});
+          $('#messageInput').val('');
+        }
+      });
+      myDataRef.on('child_changed', function(snapshot) {
+        var message = snapshot.val();
+        displayChatMessage(message);
+      });
+      function displayChatMessage(text) {
+        $('<div/>').text(text);
+        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+      };
+    </script>
 

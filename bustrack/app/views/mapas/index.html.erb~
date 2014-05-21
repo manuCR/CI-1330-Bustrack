@@ -1,34 +1,19 @@
-<div style="background:#FF0000;margin-bottom:0px;border-width:5px;border-style:double;border-radius: 15px;border-top-left-radius: 10px;font-family:Book Antiqua; width:100%;height: 75px;color:#ffffff" xmlns="http://www.w3.org/1999/html">
+<div id="header" style="margin-bottom:0px;border-width:5px;border-style:double;border-radius: 15px;border-top-left-radius: 10px;font-family:Book Antiqua; width:100%;height: 77px;color:#ffffff" xmlns="http://www.w3.org/1999/html">
 
   <h2 style="margin-left: 15px"><strong>BUS TRACK</strong></h2>
   <p style="margin-left: 15px;font-family: Brush Script MT;"><i><font size="4">Que no te deje el bus</font></i></p>
 
 </div>
 
-<style>
-
-    html, body, #map-canvas {
-        height: 100%;
-        margin: 0px;
-        padding: 0px;
-        background: #495054;
-        color: #38a9e3;
-
-    }
-    #panel {
-        position: absolute;
-        top: 5px;
-        left: 50%;
-        margin-left: -180px;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
 
 
+
+<<<<<<< HEAD
     }
 </style>
 <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
+=======
+>>>>>>> 21a1347a9449a5c52593efb8f59ff455312fec85
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
 
@@ -94,9 +79,31 @@
     //En este script se le colocan las variables start waypoint y end con estas se llenara request en el funcion calcroute que es llamada cuando le hacemo submit
     // Para HTML5 Encontre esta pagina que funciona bastante bien
 </script>
-
+<div  id="menu">
+  <ul>
+    <li><a href='index.html'><span>Home</span></a></li>
+    <li><a href='#'><span>Products</span></a>
+      <ul>
+        <li><a href='#'><span>Product 1</span></a>
+          <ul>
+            <li><a href='#'><span>Sub Item</span></a></li>
+            <li class='last'><a href='#'><span>Sub Item</span></a></li>
+          </ul>
+        </li>
+        <li><a href='#'><span>Product 2</span></a>
+          <ul>
+            <li><a href='#'><span>Sub Item</span></a></li>
+            <li><a href='#'><span>Sub Item</span></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href='#'><span>About</span></a></li>
+    <li class='last'><a href='#'><span>Contact</span></a></li>
+  </ul>
+</div>
 <div id="map-canvas" style="float:left;width:70%;height:100%;"></div>
-<div id="control_panel" style="float:right;width:30%;text-align:left;padding-top:20px">
+<div id="control_panel" style="float:right;width:20%;text-align:left;padding-top:20px">
   <div style="margin:20px;border-width:2px;">
     <b>Start:</b>
     <select id="start">
@@ -121,6 +128,9 @@
   </div>
   <div id="directions_panel" style="margin:20px;background-color:#FFEE77;"></div>
 </div>
+<div id="footer">
+  Copyright © Bus Track
+</div>
 
 
 
@@ -131,7 +141,7 @@
     <input type='text' id='nameInput' placeholder='Name'>
     <input type='text' id='messageInput' placeholder='Message'>
     <script>
-      var myDataRef = new Firebase('https://wfby8wez91w.firebaseio-demo.com/');
+      var myDataRef = new Firebase('https://blazing-fire-9075.firebaseio.com/');
       $('#messageInput').keypress(function (e) {
         if (e.keyCode == 13) {
           var name = $('#nameInput').val();
@@ -142,10 +152,10 @@
       });
       myDataRef.on('child_changed', function(snapshot) {
         var message = snapshot.val();
-        displayChatMessage(message.name, message.text);
+        displayChatMessage(message);
       });
-      function displayChatMessage(name, text) {
-        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+      function displayChatMessage(text) {
+        $('<div/>').text(text);
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
     </script>

@@ -5,17 +5,11 @@
 
 </div>
 
-
-
-
-<<<<<<< HEAD
     }
-</style>
+
 <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
-=======
->>>>>>> 21a1347a9449a5c52593efb8f59ff455312fec85
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+<!-- <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script> -->
 
 <script>
     var directionsDisplay;
@@ -32,6 +26,12 @@
         }
         map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
         directionsDisplay.setMap(map);
+
+		var marker = new google.maps.Marker({
+		    	position: new google.maps.LatLng(9.937562, -84.053329),
+				map: map,
+		    	title:"Hello World!"
+			});
     }
 
     //aqui lo que se hace es montar las direcciones entre paradas ademas de dibujar las rutas
@@ -75,9 +75,27 @@
         });
     }
 
+	var loqsea = new Firebase('https://blazing-fire-9075.firebaseio.com');
+	
+	
+
+	loqsea.on('value',function(snapshot){
+
+		var message = snapshot.val();
+		var tokens = message.split(" ");
+		var mylat = tokens[2];
+		var mylong = tokens[5];
+		var myLatlng = new google.maps.LatLng(mylat,mylong);
+		marker.setPosition(myLatlng); 	
+		
+	
+	});
+
     google.maps.event.addDomListener(window, 'load', initialize);
     //En este script se le colocan las variables start waypoint y end con estas se llenara request en el funcion calcroute que es llamada cuando le hacemo submit
     // Para HTML5 Encontre esta pagina que funciona bastante bien
+
+
 </script>
 <div  id="menu">
   <ul>
@@ -132,31 +150,9 @@
   Copyright © Bus Track
 </div>
 
+	<script>
 
+	
 
-
-
-
-    <div id='messagesDiv'></div>
-    <input type='text' id='nameInput' placeholder='Name'>
-    <input type='text' id='messageInput' placeholder='Message'>
-    <script>
-      var myDataRef = new Firebase('https://blazing-fire-9075.firebaseio.com/');
-      $('#messageInput').keypress(function (e) {
-        if (e.keyCode == 13) {
-          var name = $('#nameInput').val();
-          var text = $('#messageInput').val();
-          myDataRef.push({name: name, text: text});
-          $('#messageInput').val('');
-        }
-      });
-      myDataRef.on('child_changed', function(snapshot) {
-        var message = snapshot.val();
-        displayChatMessage(message);
-      });
-      function displayChatMessage(text) {
-        $('<div/>').text(text);
-        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-      };
-    </script>
+</script>    
 

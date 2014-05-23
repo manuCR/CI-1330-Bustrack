@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.location.Location;
 import android.location.LocationManager;
@@ -22,6 +23,9 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		String s = Installation.id(getApplicationContext());
+		//Este es el número único generado por cada android OS
+		Toast.makeText( getApplicationContext(), s,Toast.LENGTH_SHORT ).show();
 		LocationManager mlocManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 		LocationListener mlocListener = new MyLocationListener();
 		mlocManager.requestLocationUpdates( LocationManager.GPS_PROVIDER, 0, 0, mlocListener);
@@ -50,17 +54,15 @@ public class MainActivity extends Activity {
 	
 	public class MyLocationListener implements LocationListener
 	{
-	Firebase firebaseRef = new Firebase("https://blazing-fire-9075.firebaseio.com/");
+	Firebase firebaseRef = new Firebase("https://blazing-fire-9075.firebaseio.com/1");
 	@Override
 	public void onLocationChanged(Location loc)
 	{
-	loc.getLatitude();
-	loc.getLongitude();
-
 	/*String Text = "My current location is: " + "Latitud = " + loc.getLatitude() +
 	"Longitud = " + loc.getLongitude();
 
 	Toast.makeText(getApplicationContext(),Text,Toast.LENGTH_SHORT).show();*/
+		
 	firebaseRef.setValue("Lat = " + loc.getLatitude() +
 						 " Long = " + loc.getLongitude()
 	);	
@@ -69,12 +71,16 @@ public class MainActivity extends Activity {
 	@Override
 	public void onProviderDisabled(String provider)
 	{
+	TextView t = (TextView)findViewById(R.id.textView1);
+	t.setText("Favor active \nel GPS para \npoder continuar");
 	Toast.makeText( getApplicationContext(), "Gps Desactivado",Toast.LENGTH_SHORT ).show();
 	}
 
 	@Override
 	public void onProviderEnabled(String provider)
 	{
+	TextView t = (TextView)findViewById(R.id.textView1);
+	t.setText("Enviando \nubicación a \nServidor");
 	Toast.makeText( getApplicationContext(),"Gps Activado",Toast.LENGTH_SHORT).show();
 	}
 

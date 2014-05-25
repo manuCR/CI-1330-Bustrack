@@ -11,6 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationListener;
@@ -23,12 +24,11 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		String s = Installation.id(getApplicationContext());
-		//Este es el número único generado por cada android OS
-		Toast.makeText( getApplicationContext(), s,Toast.LENGTH_SHORT ).show();
 		LocationManager mlocManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 		LocationListener mlocListener = new MyLocationListener();
+		mlocManager.requestLocationUpdates( LocationManager.NETWORK_PROVIDER, 0, 0, mlocListener);
 		mlocManager.requestLocationUpdates( LocationManager.GPS_PROVIDER, 0, 0, mlocListener);
+		
 		
 		buttonListener();
 	}
@@ -54,14 +54,18 @@ public class MainActivity extends Activity {
 	
 	public class MyLocationListener implements LocationListener
 	{
-	Firebase firebaseRef = new Firebase("https://blazing-fire-9075.firebaseio.com/1");
+	String UUID = Installation.id(getApplicationContext());
+		//Este es el número único generado por cada android OS
+	Firebase firebaseRef = new Firebase("https://blazing-fire-9075.firebaseio.com/"+UUID);
 	@Override
 	public void onLocationChanged(Location loc)
-	{
-	/*String Text = "My current location is: " + "Latitud = " + loc.getLatitude() +
-	"Longitud = " + loc.getLongitude();
+	{	
+		//System.out.println("My current location is: " + "Latitud = " + loc.getLatitude() + "Longitud = " + loc.getLongitude());
+	//Toast.makeText( getApplicationContext(), s,Toast.LENGTH_SHORT ).show();
+	  String Text = "My current location is: " + "Latitud = " + loc.getLatitude() +
+	  "Longitud = " + loc.getLongitude();
 
-	Toast.makeText(getApplicationContext(),Text,Toast.LENGTH_SHORT).show();*/
+	Toast.makeText(getApplicationContext(),Text,Toast.LENGTH_SHORT).show();
 		
 	firebaseRef.setValue("Lat = " + loc.getLatitude() +
 						 " Long = " + loc.getLongitude()

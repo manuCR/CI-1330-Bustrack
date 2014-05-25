@@ -9,9 +9,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationListener;
@@ -60,32 +58,42 @@ public class MainActivity extends Activity {
 	@Override
 	public void onLocationChanged(Location loc)
 	{	
-		//System.out.println("My current location is: " + "Latitud = " + loc.getLatitude() + "Longitud = " + loc.getLongitude());
-	//Toast.makeText( getApplicationContext(), s,Toast.LENGTH_SHORT ).show();
-	  String Text = "My current location is: " + "Latitud = " + loc.getLatitude() +
-	  "Longitud = " + loc.getLongitude();
+	  	/*String Text = "Mi ubicación actual es: " + "Latitud = " + loc.getLatitude() +
+	  	" Longitud = " + loc.getLongitude();*/
 
-	Toast.makeText(getApplicationContext(),Text,Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(),"Actualizando ubicación",Toast.LENGTH_SHORT).show();
 		
-	firebaseRef.setValue("Lat = " + loc.getLatitude() +
-						 " Long = " + loc.getLongitude()
-	);	
+		firebaseRef.setValue("Lat = " + loc.getLatitude() +
+							 " Long = " + loc.getLongitude()
+		);	
 	}
 
 	@Override
 	public void onProviderDisabled(String provider)
 	{
-	TextView t = (TextView)findViewById(R.id.textView1);
-	t.setText("Favor active \nel GPS para \npoder continuar");
-	Toast.makeText( getApplicationContext(), "Gps Desactivado",Toast.LENGTH_SHORT ).show();
+		/*
+		if(provider==LocationManager.NETWORK_PROVIDER){
+			TextView t = (TextView)findViewById(R.id.textView1);
+			t.setText("Favor active \nel WIFI o el GPS para \npoder continuar");
+			Toast.makeText( getApplicationContext(), "WIFI Desactivado",Toast.LENGTH_SHORT ).show();
+		}
+		if(provider==LocationManager.GPS_PROVIDER){
+			Toast.makeText( getApplicationContext(), "GPS Desactivado",Toast.LENGTH_SHORT ).show();
+		}*/
+	
 	}
 
 	@Override
 	public void onProviderEnabled(String provider)
 	{
-	TextView t = (TextView)findViewById(R.id.textView1);
-	t.setText("Enviando \nubicación a \nServidor");
-	Toast.makeText( getApplicationContext(),"Gps Activado",Toast.LENGTH_SHORT).show();
+		/*if(provider==LocationManager.NETWORK_PROVIDER){
+			TextView t = (TextView)findViewById(R.id.textView1);
+			t.setText("Enviando \nubicación a \nServidor");
+			Toast.makeText( getApplicationContext(),"WIFI Activado",Toast.LENGTH_SHORT).show();
+		}
+		if(provider==LocationManager.GPS_PROVIDER){
+			Toast.makeText( getApplicationContext(), "GPS Activado",Toast.LENGTH_SHORT ).show();
+		}*/
 	}
 
 	@Override

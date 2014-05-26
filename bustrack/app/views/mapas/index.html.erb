@@ -76,21 +76,32 @@
         });
     }
 
-	var loqsea = new Firebase('https://blazing-fire-9075.firebaseio.com');
+	var firebaseRef = new Firebase('https://blazing-fire-9075.firebaseio.com');
 	
-	
-
-	loqsea.on('value',function(snapshot){
-
-		var message = snapshot.val();
-		var tokens = message.split(" ");
+	firebaseRef.on('child_changed', function(snapshot) {
+        var message = snapshot.val();
+		var id = message.name;
+		console.log(id);
+		var crd = message.value;
+		console.log(id);
+		var tokens = crd.split(" ");
 		var mylat = tokens[2];
 		var mylong = tokens[5];
 		var myLatlng = new google.maps.LatLng(mylat,mylong);
 		marker.setPosition(myLatlng); 	
+		displayChatMessage(message.name, message.text);
+     });
+
+//	loqsea.on('value',function(snapshot){
+
+//		var message = snapshot.val();
+//		var tokens = message.split(" ");
+//		var mylat = tokens[2];
+//		var mylong = tokens[5];
+//		var myLatlng = new google.maps.LatLng(mylat,mylong);
+//		marker.setPosition(myLatlng); 	
 		
-	
-	});
+//	});
 
     google.maps.event.addDomListener(window, 'load', initialize);
     //En este script se le colocan las variables start waypoint y end con estas se llenara request en el funcion calcroute que es llamada cuando le hacemo submit

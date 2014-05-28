@@ -100,7 +100,7 @@
 	var firebaseRef = new Firebase('https://blazing-fire-9075.firebaseio.com');
 	
 	firebaseRef.on('child_changed', function(snapshot) {
-        var message = snapshot.val();
+		var message = snapshot.val();
 		//console.log(message);
 		var device = message.GpsID;
 		//console.log(device);
@@ -112,16 +112,20 @@
 		var mylong = tokens[1];
 		var myLatlng = new google.maps.LatLng(mylat,mylong);
 		
-		if(device = '3a1bb1eb-be18-41db-9a2b-562506c86fef'){
-			console.log('bg1');
+		if(device == '3a1bb1eb-be18-41db-9a2b-562506c86fef'){
 			busGranadilla1.setPosition(myLatlng);
 		}
-		else if(device = 'a79db0be-5606-43a3-816b-d8c9144b1985'){
-			console.log('bg2');
+		else if(device == 'a79db0be-5606-43a3-816b-d8c9144b1985'){
 			busGranadilla2.setPosition(myLatlng);
 		}
 		
-     });
+ 		else if(device == 'cceed289-d438-41ed-a7e5-5e52c61ef1d0'){
+			busPipiolo.setPosition(myLatlng);
+		}
+		
+	});
+	
+	
 
     google.maps.event.addDomListener(window, 'load', initialize);
     //En este script se le colocan las variables start waypoint y end con estas se llenara request en el funcion calcroute que es llamada cuando le hacemo submit

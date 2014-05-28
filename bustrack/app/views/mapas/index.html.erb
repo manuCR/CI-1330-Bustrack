@@ -125,7 +125,14 @@
 		
 	});
 	
-	
+	//$('#from').keypress(function (e) {
+        //if (e.keyCode == 13) {
+        //  var name = $('#nameInput').val();
+        //  var text = $('#messageInput').val();
+        //  myDataRef.push({name: name, text: text});
+        //  $('#messageInput').val('');
+        //}
+        //});
 
     google.maps.event.addDomListener(window, 'load', initialize);
     //En este script se le colocan las variables start waypoint y end con estas se llenara request en el funcion calcroute que es llamada cuando le hacemo submit
@@ -135,7 +142,7 @@
 </script>
 <div  id="menu">
   <ul>
-    <li><a href='index.html'><span>Home</span></a></li>
+    <li><a href='#'><span>Home</span></a></li>
     <li><a href='#'><span>Products</span></a>
       <ul>
         <li><a href='#'><span>Product 1</span></a>
@@ -147,7 +154,7 @@
         <li><a href='#'><span>Product 2</span></a>
           <ul>
             <li><a href='#'><span>Sub Item</span></a></li>
-            <li><a href='#'><span>Sub Item</span></a></li>
+            <li><a href='#'><span>Vea</span></a></li>
           </ul>
         </li>
       </ul>
@@ -155,6 +162,13 @@
     <li><a href='#'><span>About</span></a></li>
     <li class='last'><a href='#'><span>Contact</span></a></li>
   </ul>
+  <br>
+  
+  <p id="searchTo"> To: </a>
+  <input id="to" type="search" />
+  
+  <p id="searchFrom"> From: </a>
+  <input id="from" type="search" /> 
 </div>
 <div id="map-canvas" style="float:left;width:70%;height:100%;"></div>
 <div id="control_panel" style="float:right;width:20%;text-align:left;padding-top:20px">

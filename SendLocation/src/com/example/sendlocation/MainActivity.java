@@ -56,7 +56,7 @@ public class MainActivity extends Activity {
 	String UUID = Installation.id(getApplicationContext());
 		//Este es el número único generado por cada android OS
 	Firebase firebaseRef = new Firebase("https://blazing-fire-9075.firebaseio.com/Device-"+UUID);
-	//Firebase hijoDeLaClase = firebaseRef.child("Device");
+	
 	@Override
 	public void onLocationChanged(Location loc)
 	{	

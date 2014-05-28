@@ -107,6 +107,11 @@ h1
     float:right;
 }
 
+#search
+{
+    color: #AAAAAA;
+}
+
 #footer
 {
     width: 100%;

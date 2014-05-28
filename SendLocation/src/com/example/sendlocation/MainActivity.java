@@ -45,6 +45,7 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
+				Installation.end();
 				finish();
 			}
 		});
@@ -54,7 +55,8 @@ public class MainActivity extends Activity {
 	{
 	String UUID = Installation.id(getApplicationContext());
 		//Este es el número único generado por cada android OS
-	Firebase firebaseRef = new Firebase("https://blazing-fire-9075.firebaseio.com/"+UUID);
+	Firebase firebaseRef = new Firebase("https://blazing-fire-9075.firebaseio.com/Device-"+UUID);
+	//Firebase hijoDeLaClase = firebaseRef.child("Device");
 	@Override
 	public void onLocationChanged(Location loc)
 	{	
@@ -63,9 +65,14 @@ public class MainActivity extends Activity {
 
 		Toast.makeText(getApplicationContext(),"Actualizando ubicación",Toast.LENGTH_SHORT).show();
 		
-		firebaseRef.setValue("Lat = " + loc.getLatitude() +
-							 " Long = " + loc.getLongitude()
-		);	
+			
+		String location = loc.getLatitude() + " " + loc.getLongitude();
+		//firebaseRef.setValue(location);
+		firebaseRef.child("GpsID").setValue(UUID);
+		firebaseRef.child("Location").setValue(location);
+		
+		
+		//new MyObject(UUID,location)
 	}
 
 	@Override
@@ -102,4 +109,23 @@ public class MainActivity extends Activity {
 	}
 
 	} //End mylocationlistener
+	
+	public class MyObject{
+		private String identify;
+		private String location;
+		
+		public MyObject(String id, String loc){
+			this.identify = id;
+			this.location = loc;
+		}
+		
+		public String GetId(){
+			return identify;
+		}
+		
+		public String GetLoc(){
+			return location;
+		}
+		
+	}
 }

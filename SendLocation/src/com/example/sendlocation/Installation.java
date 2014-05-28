@@ -40,4 +40,8 @@ public class Installation {
         out.write(id.getBytes());
         out.close();
     }
+    
+    public static void end(){
+    	System.exit(0);
+    }
 }

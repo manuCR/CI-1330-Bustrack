@@ -15,7 +15,10 @@
     var directionsDisplay;
     var directionsService = new google.maps.DirectionsService();
     var map;
-	var marker;
+	var busGranadilla1;
+	var busGranadilla2;
+    var busPipiolo;
+    var busExpreso;
 
     // Initialize esta funcion coloca el mapa en la posicion de nuestra preferencia Latitud Longuitud y ademas podemos agregar el zoom incial
     function initialize() {
@@ -28,11 +31,29 @@
         map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
         directionsDisplay.setMap(map);
 
-		 marker = new google.maps.Marker({
-		    	position: new google.maps.LatLng(9.937562, -84.053329),
-				map: map,
-		    	title:"Hello World!"
-			});
+		 busGranadilla1 = new google.maps.Marker({
+			position: new google.maps.LatLng(0, 0.1),
+			map: map,
+			title:"Granadilla - San José"
+	      });
+		  
+		 busGranadilla2 = new google.maps.Marker({
+			position: new google.maps.LatLng(0, 0.2),
+			map: map,
+			title:"Granadilla - San José"
+	      });
+		  
+		  busPipiolo = new google.maps.Marker({
+			  position: new google.maps.LatLng(0, 0.3),
+			  map: map,
+			  title:"UCR - Pipiolo"
+	      });
+		  
+		  busExpreso = new google.maps.Marker({
+			  position: new google.maps.LatLng(0, 0),
+			  map: map,
+			  title:"Expreso Periferica"
+	      });
     }
 
     //aqui lo que se hace es montar las direcciones entre paradas ademas de dibujar las rutas
@@ -80,28 +101,27 @@
 	
 	firebaseRef.on('child_changed', function(snapshot) {
         var message = snapshot.val();
-		var id = message.name;
-		console.log(id);
-		var crd = message.value;
-		console.log(id);
-		var tokens = crd.split(" ");
-		var mylat = tokens[2];
-		var mylong = tokens[5];
-		var myLatlng = new google.maps.LatLng(mylat,mylong);
-		marker.setPosition(myLatlng); 	
-		displayChatMessage(message.name, message.text);
-     });
-
-//	loqsea.on('value',function(snapshot){
-
-//		var message = snapshot.val();
-//		var tokens = message.split(" ");
-//		var mylat = tokens[2];
-//		var mylong = tokens[5];
-//		var myLatlng = new google.maps.LatLng(mylat,mylong);
-//		marker.setPosition(myLatlng); 	
+		//console.log(message);
+		var device = message.GpsID;
+		//console.log(device);
+		var location = message.Location;
+		//console.log(location);
 		
-//	});
+		var tokens = location.split(" ");
+		var mylat = tokens[0];
+		var mylong = tokens[1];
+		var myLatlng = new google.maps.LatLng(mylat,mylong);
+		
+		if(device = '3a1bb1eb-be18-41db-9a2b-562506c86fef'){
+			console.log('bg1');
+			busGranadilla1.setPosition(myLatlng);
+		}
+		else if(device = 'a79db0be-5606-43a3-816b-d8c9144b1985'){
+			console.log('bg2');
+			busGranadilla2.setPosition(myLatlng);
+		}
+		
+     });
 
     google.maps.event.addDomListener(window, 'load', initialize);
     //En este script se le colocan las variables start waypoint y end con estas se llenara request en el funcion calcroute que es llamada cuando le hacemo submit

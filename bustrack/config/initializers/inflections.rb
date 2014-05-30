@@ -16,5 +16,5 @@
 # end
 
 ActiveSupport::Inflector.inflections do |inflect|
- inflect.irregular 'rutas', 'rutas'
+ inflect.irregular 'rutas', 'ruta'
 end

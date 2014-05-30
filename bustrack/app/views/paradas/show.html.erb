@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @parada.nombre %>
+</p>
+
+<p>
+  <strong>Techo:</strong>
+  <%= @parada.techo %>
+</p>
+
+<p>
+  <strong>Latitid:</strong>
+  <%= @parada.latitid %>
+</p>
+
+<p>
+  <strong>Longuitud:</strong>
+  <%= @parada.longuitud %>
+</p>
+
+<%= link_to 'Edit', edit_parada_path(@parada) %> |
+<%= link_to 'Back', paradas_path %>

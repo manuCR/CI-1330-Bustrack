@@ -1,0 +1,31 @@
+<h1>Listing paradas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Techo</th>
+      <th>Latitid</th>
+      <th>Longuitud</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @paradas.each do |parada| %>
+      <tr>
+        <td><%= parada.nombre %></td>
+        <td><%= parada.techo %></td>
+        <td><%= parada.latitid %></td>
+        <td><%= parada.longuitud %></td>
+        <td><%= link_to 'Show', parada %></td>
+        <td><%= link_to 'Edit', edit_parada_path(parada) %></td>
+        <td><%= link_to 'Destroy', parada, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Parada', new_parada_path %>

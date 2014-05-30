@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  techo: false
+  latitid: 1.5
+  longuitud: 1.5
+
+two:
+  nombre: MyString
+  techo: false
+  latitid: 1.5
+  longuitud: 1.5

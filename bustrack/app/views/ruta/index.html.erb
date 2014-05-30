@@ -1,0 +1,39 @@
+<h1>Listing ruta</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Inicio latitud</th>
+      <th>Inicio longuitud</th>
+      <th>Fin latitud</th>
+      <th>Fin longuitud</th>
+      <th>Frecuencia</th>
+      <th>Precio</th>
+      <th>Horario</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ruta.each do |rutas| %>
+      <tr>
+        <td><%= rutas.nombre %></td>
+        <td><%= rutas.Inicio_Latitud %></td>
+        <td><%= rutas.Inicio_Longuitud %></td>
+        <td><%= rutas.Fin_Latitud %></td>
+        <td><%= rutas.Fin_Longuitud %></td>
+        <td><%= rutas.Frecuencia %></td>
+        <td><%= rutas.Precio %></td>
+        <td><%= rutas.Horario %></td>
+        <td><%= link_to 'Show', rutas %></td>
+        <td><%= link_to 'Edit', edit_rutas_path(rutas) %></td>
+        <td><%= link_to 'Destroy', rutas, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rutas', new_rutas_path %>

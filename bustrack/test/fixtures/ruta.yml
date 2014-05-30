@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  Inicio_Latitud: 1.5
+  Inicio_Longuitud: 1.5
+  Fin_Latitud: 1.5
+  Fin_Longuitud: 1.5
+  Frecuencia: MyString
+  Precio: 1
+  Horario: MyString
+
+two:
+  nombre: MyString
+  Inicio_Latitud: 1.5
+  Inicio_Longuitud: 1.5
+  Fin_Latitud: 1.5
+  Fin_Longuitud: 1.5
+  Frecuencia: MyString
+  Precio: 1
+  Horario: MyString

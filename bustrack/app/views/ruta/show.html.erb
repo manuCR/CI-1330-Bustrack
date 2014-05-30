@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @rutas.nombre %>
+</p>
+
+<p>
+  <strong>Inicio latitud:</strong>
+  <%= @rutas.Inicio_Latitud %>
+</p>
+
+<p>
+  <strong>Inicio longuitud:</strong>
+  <%= @rutas.Inicio_Longuitud %>
+</p>
+
+<p>
+  <strong>Fin latitud:</strong>
+  <%= @rutas.Fin_Latitud %>
+</p>
+
+<p>
+  <strong>Fin longuitud:</strong>
+  <%= @rutas.Fin_Longuitud %>
+</p>
+
+<p>
+  <strong>Frecuencia:</strong>
+  <%= @rutas.Frecuencia %>
+</p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @rutas.Precio %>
+</p>
+
+<p>
+  <strong>Horario:</strong>
+  <%= @rutas.Horario %>
+</p>
+
+<%= link_to 'Edit', edit_rutas_path(@rutas) %> |
+<%= link_to 'Back', ruta_path %>

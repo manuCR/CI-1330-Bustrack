@@ -125,14 +125,12 @@
 		
 	});
 	
-	//$('#from').keypress(function (e) {
-        //if (e.keyCode == 13) {
-        //  var name = $('#nameInput').val();
-        //  var text = $('#messageInput').val();
-        //  myDataRef.push({name: name, text: text});
-        //  $('#messageInput').val('');
-        //}
-        //});
+	function searchToFrom(){
+      var to = $('#to').val();
+      var from = $('#from').val();
+
+      console.log(to+' '+from);
+	}
 
     google.maps.event.addDomListener(window, 'load', initialize);
     //En este script se le colocan las variables start waypoint y end con estas se llenara request en el funcion calcroute que es llamada cuando le hacemo submit
@@ -163,12 +161,16 @@
     <li class='last'><a href='#'><span>Contact</span></a></li>
   </ul>
   <br>
-  
+
   <p id="searchTo"> To: </a>
-  <input id="to" type="search" />
-  
+  <input id="to" type="search" autocomplete="on" size='10' />
+
   <p id="searchFrom"> From: </a>
-  <input id="from" type="search" /> 
+  <input id="from" type="search" autocomplete="on" size=10 /> 
+	<br>
+	<br>
+	<input type="submit" onclick="searchToFrom()" value="Buscar">
+
 </div>
 <div id="map-canvas" style="float:left;width:70%;height:100%;"></div>
 <div id="control_panel" style="float:right;width:20%;text-align:left;padding-top:20px">

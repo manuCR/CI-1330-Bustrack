@@ -1,0 +1,49 @@
+<%= form_for(@ruta) do |f| %>
+  <% if @ruta.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ruta.errors.count, "error") %> prohibited this ruta from being saved:</h2>
+
+      <ul>
+      <% @ruta.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :precio %><br>
+    <%= f.number_field :precio %>
+  </div>
+  <div class="field">
+    <%= f.label :inicio_lat %><br>
+    <%= f.text_field :inicio_lat %>
+  </div>
+  <div class="field">
+    <%= f.label :inicio_long %><br>
+    <%= f.text_field :inicio_long %>
+  </div>
+  <div class="field">
+    <%= f.label :fin_lat %><br>
+    <%= f.text_field :fin_lat %>
+  </div>
+  <div class="field">
+    <%= f.label :fin_long %><br>
+    <%= f.text_field :fin_long %>
+  </div>
+  <div class="field">
+    <%= f.label :horario %><br>
+    <%= f.text_field :horario %>
+  </div>
+  <div class="field">
+    <%= f.label :frecuencia %><br>
+    <%= f.text_field :frecuencia %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

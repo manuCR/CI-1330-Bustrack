@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RutasTest < ActiveSupport::TestCase
+class RutaTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -45,7 +45,7 @@
   </div>
   <div>
      <%= f.label :paradas %>
-     <%= select_tag "grupo_paradas", options_from_collection_for_select(Parada.all, 'id', 'nombre',@ruta.parada.map{ |j| j.id }), :multiple => true %>
+     <%= select_tag "grupo_paradas", options_from_collection_for_select(Parada.all, 'id', 'nombre',@rutas.parada.map{ |j| j.id }), :multiple => true %>
   </div>
   <div class="actions">
     <%= f.submit %>

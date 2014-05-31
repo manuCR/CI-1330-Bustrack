@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140531193705) do
+ActiveRecord::Schema.define(version: 20140531195654) do
 
   create_table "mapas", force: true do |t|
     t.datetime "created_at"
@@ -25,6 +25,11 @@ ActiveRecord::Schema.define(version: 20140531193705) do
     t.float    "longuitud"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "paradas_rutas", id: false, force: true do |t|
+    t.integer "parada_id", null: false
+    t.integer "ruta_id",   null: false
   end
 
   create_table "rutas", force: true do |t|

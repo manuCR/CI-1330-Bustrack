@@ -46,7 +46,7 @@ class RutasController < ApplicationController
         format.html { redirect_to @ruta, notice: 'Ruta was successfully updated.' }
         format.json { render :show, status: :ok, location: @ruta }
 	@paradas = Parada.where(:id => params[:grupo_paradas])
-        @ruta.parada.destroy_all
+        @rutas.parada.destroy_all
         @ruta.parada << @paradas
       else
         format.html { render :edit }

@@ -126,10 +126,35 @@
 	});
 	
 	function searchToFrom(){
-      var to = $('#to').val();
-      var from = $('#from').val();
-
-      console.log(to+' '+from);
+      var end = document.getElementById('to').val();
+      var start = document.getElementById('from').val();
+		console.log(end+start+"");
+		
+        /*var request = {
+            origin: start,
+            destination: end,
+            //waypoints: waypts,
+            //optimizeWaypoints: false,
+            travelMode: google.maps.TravelMode.DRIVING
+        };
+		console.log('aqui');
+//aque se llama al metodo para dibujar el mapa
+        directionsService.route(request, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+                var route = response.routes[0];
+                //var summaryPanel = document.getElementById('directions_panel');
+                //summaryPanel.innerHTML = '';
+                // For each route, display summary information.
+                for (var i = 0; i < route.legs.length; i++) {
+                    var routeSegment = i + 1;
+                    summaryPanel.innerHTML += '<b>Segmento de ruta: ' + routeSegment + '</b><br>';
+                    summaryPanel.innerHTML += route.legs[i].start_address + ' hacia ';
+                    summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+                    summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+                }
+            }
+        });*/
 	}
 
     google.maps.event.addDomListener(window, 'load', initialize);
@@ -163,10 +188,10 @@
   <br>
 
   <p id="searchTo"> To: </a>
-  <input id="to" type="search" autocomplete="on" size='10' />
+  <input id="to" type="search" size=10 />
 
   <p id="searchFrom"> From: </a>
-  <input id="from" type="search" autocomplete="on" size=10 /> 
+  <input id="from" type="search" size=10 /> 
 	<br>
 	<br>
 	<input type="submit" onclick="searchToFrom()" value="Buscar">

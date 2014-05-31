@@ -15,10 +15,19 @@
     var directionsDisplay;
     var directionsService = new google.maps.DirectionsService();
     var map;
-	var busGranadilla1;
-	var busGranadilla2;
+		var busGranadilla1;
+		var busGranadilla2;
     var busPipiolo;
     var busExpreso;
+
+		var places = {
+		  "San José": {
+		      location: "9.933091, -84.078570"
+		  },
+		  "UCR": {
+		      location: "9.935149,-84.051142"
+		  }
+		};
 
     // Initialize esta funcion coloca el mapa en la posicion de nuestra preferencia Latitud Longuitud y ademas podemos agregar el zoom incial
     function initialize() {
@@ -124,12 +133,46 @@
 		}
 		
 	});
-	
+	//Selecciona un punto inicial y un final, y dibuja la ruta de éste, de momento lo que tiene arriba es la definición de dos paradas
+	//UCR y San José, y elige la mejor ruta sin seguir ninguna condición. En vez de hacerlo así, después va a obtener las coordenadas
+//desde la BD y puede ser que al sacar la ruta de la base de datos, pueda sacar también las paradas para definir siempre la ruta establecida.
 	function searchToFrom(){
       var to = $('#to').val();
       var from = $('#from').val();
-
-      console.log(to+' '+from);
+			var waypts = [];
+      var checkboxArray = [start, end];
+			var start;
+			var end;
+			if (from in places) {
+				start = places[from].location;
+    	} else {
+        alert(from +': ubicación desconocida');
+    	}
+			if (to in places) {
+				end = places[to].location;
+    	} else {
+        alert(to + ': ubicación desconocida');
+    	}
+			waypts.push({
+                    location:start,
+                    stopover:true});
+			waypts.push({
+                    location:end,
+                    stopover:true});
+      var request = {
+          origin: start,
+          destination: end,
+          waypoints: waypts,
+          optimizeWaypoints: false,
+          travelMode: google.maps.TravelMode.DRIVING
+      };
+//aque se llama al metodo para dibujar el mapa
+        directionsService.route(request, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+                var route = response.routes[0];
+            }
+        });
 	}
 
     google.maps.event.addDomListener(window, 'load', initialize);
@@ -163,10 +206,10 @@
   <br>
 
   <p id="searchTo"> To: </a>
-  <input id="to" type="search" autocomplete="on" size='10' />
+  <input id="to" type="search" size=10 />
 
   <p id="searchFrom"> From: </a>
-  <input id="from" type="search" autocomplete="on" size=10 /> 
+  <input id="from" type="search" size=10 /> 
 	<br>
 	<br>
 	<input type="submit" onclick="searchToFrom()" value="Buscar">
@@ -201,10 +244,3 @@
 <div id="footer">
   Copyright © Bus Track
 </div>
-
-	<script>
-
-	
-
-</script>    
-

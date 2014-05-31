@@ -39,6 +39,11 @@
   <strong>Frecuencia:</strong>
   <%= @ruta.frecuencia %>
 </p>
+<p>
+  <% @ruta.parada.each do |parada| %>-
+      <%= parada.nombre%>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_ruta_path(@ruta) %> |
 <%= link_to 'Back', rutas_path %>

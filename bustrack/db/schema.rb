@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140531195654) do
+ActiveRecord::Schema.define(version: 20140602232154) do
 
   create_table "mapas", force: true do |t|
     t.datetime "created_at"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20140531195654) do
   create_table "paradas", force: true do |t|
     t.string   "nombre"
     t.boolean  "techo"
-    t.float    "latitid"
-    t.float    "longuitud"
+    t.float    "latitud"
+    t.float    "longitud"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

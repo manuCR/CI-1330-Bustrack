@@ -18,7 +18,7 @@ class ParadasControllerTest < ActionController::TestCase
 
   test "should create parada" do
     assert_difference('Parada.count') do
-      post :create, parada: { latitid: @parada.latitid, longuitud: @parada.longuitud, nombre: @parada.nombre, techo: @parada.techo }
+      post :create, parada: { latitud: @parada.latitud, longitud: @parada.longitud, nombre: @parada.nombre, techo: @parada.techo }
     end
 
     assert_redirected_to parada_path(assigns(:parada))
@@ -35,7 +35,7 @@ class ParadasControllerTest < ActionController::TestCase
   end
 
   test "should update parada" do
-    patch :update, id: @parada, parada: { latitid: @parada.latitid, longuitud: @parada.longuitud, nombre: @parada.nombre, techo: @parada.techo }
+    patch :update, id: @parada, parada: { latitud: @parada.latitud, longitud: @parada.longitud, nombre: @parada.nombre, techo: @parada.techo }
     assert_redirected_to parada_path(assigns(:parada))
   end
 

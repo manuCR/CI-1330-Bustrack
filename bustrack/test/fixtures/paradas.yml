@@ -3,11 +3,11 @@
 one:
   nombre: MyString
   techo: false
-  latitid: 1.5
-  longuitud: 1.5
+  latitud: 1.5
+  longitud: 1.5
 
 two:
   nombre: MyString
   techo: false
-  latitid: 1.5
-  longuitud: 1.5
+  latitud: 1.5
+  longitud: 1.5

@@ -68,7 +68,7 @@
           var waypts = [];
 //en este for se agregan las paradas
  	  <% @ruta.parada.each do |parada| %>
-	      waypts.push({location:"<%= parada.latitid %>,<%= parada.longuitud %>",stopover:true});
+	      waypts.push({location:"<%= parada.latitud %>,<%= parada.longitud %>",stopover:true});
 	  <% end %>
 //var request es la variable mas importante ya que en ella se colocan el principio y el final de las rutas ademas de que los waypts que en nuestro caso lo veria como paradas
           var request = {

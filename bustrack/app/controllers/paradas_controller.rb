@@ -69,6 +69,6 @@ class ParadasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def parada_params
-      params.require(:parada).permit(:nombre, :techo, :latitid, :longuitud)
+      params.require(:parada).permit(:nombre, :techo, :latitud, :longitud)
     end
 end

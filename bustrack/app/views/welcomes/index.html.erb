@@ -36,17 +36,16 @@
 	
 		<div id = "search">
 	
-			<input name="from" placeholder="desde"> </input>
-				<datalist id="fromresults">
-					<option>Ray</option>
-					<option>Scott</option>
-					<option>Todd</option>
-					<option>Dave</option>
-					<option>Jeanne</option>
-					<option>Jacob</option>
+			<input id="from" placeholder="desde" list="fromresults"> </input>
+				 <datalist id="fromresults">
+				 <% Parada.all.each do |parada| %>
+				    <option value= <%= parada.nombre %> >
+				 <% end %>
 				</datalist>
-
+			
 			<input name="to" placeholder="a"> </input> 	
+			<!-- from.value -->
+				
 	</div>
 	
 	<div id="logo"></div>

@@ -35,10 +35,17 @@
 	</div>
 	
 		<div id = "search">
-	
-			<input name="from" placeholder="desde"> </input>
+			<%= form_for @ruta do |f| %>
+			<p>
+			<%= f.label :from %><br />
+			<%= f.text_field :name %>
+			</p>
+			<!--input name="from" placeholder="desde"> </input> -->
+
 			<input name="to" placeholder="a"> </input> 	
 	</div>
+	
+	<div id="logo"></div>
 
 <script>
 

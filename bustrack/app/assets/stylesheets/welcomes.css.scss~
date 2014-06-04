@@ -29,6 +29,28 @@ border: none;
 position: absolute;
 }
 
+#search{
+
+	 bottom:400px;
+	 left: 100px;
+	 width: 380px; 
+     height: 250px;
+	 z-index:500;
+	 position:relative;
+	 background-color: rgba(255, 255, 255, 0.5);
+
+}
+
+#search > input{
+
+	width: 350px;
+	type: text;
+	height: 40px;
+	margin:15px; 
+	
+}
+
+
 
 .pure-menu ul {
     position: absolute;

@@ -33,6 +33,12 @@
      		<%= image_tag "teatro.jpg", {width: 1366, height:500} %>
    		</div>
 	</div>
+	
+		<div id = "search">
+	
+			<input name="from" placeholder="desde"> </input>
+			<input name="to" placeholder="a"> </input> 	
+	</div>
 
 <script>
 
@@ -45,6 +51,6 @@ setInterval(function() {
     .fadeIn(1000)
     .end()
     .appendTo('#slideshow');
-},  2000);
+},  7000);
 
 </script>

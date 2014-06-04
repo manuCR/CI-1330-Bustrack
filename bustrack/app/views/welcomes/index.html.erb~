@@ -27,25 +27,28 @@
    	
    		  		
    		<div>
-    		 <img src="http://farm6.static.flickr.com/5224/5658667829_2bb7d42a9c_m.jpg" width=100% height="500">
+    		 <img src="/assets/teatro.jpg" width=100% height="500">
    		</div>
    		<div>
-     		<%= image_tag "teatro.jpg", {width: 1366, height:500} %>
+     		<img src="/assets/teatro.jpg" width=100% height="500">
    		</div>
 	</div>
 	
 		<div id = "search">
-			<%= form_for @ruta do |f| %>
-			<p>
-			<%= f.label :from %><br />
-			<%= f.text_field :name %>
-			</p>
-			<!--input name="from" placeholder="desde"> </input> -->
-
+	
+			<input id="from" placeholder="desde" list="fromresults"> </input>
+				 <datalist id="fromresults">
+				 <% Parada.all.each do |parada| %>
+				    <option value= <%= parada.nombre %> >
+				 <% end %>
+				</datalist>
+			
 			<input name="to" placeholder="a"> </input> 	
+			<!-- from.value -->
+				
 	</div>
 	
-	<div id="logo"></div>
+	<div id="logo"> <img src= "/assets/logo.png"></div>
 
 <script>
 

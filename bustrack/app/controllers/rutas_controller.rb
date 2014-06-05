@@ -30,7 +30,7 @@ class RutasController < ApplicationController
         format.html { redirect_to @ruta, notice: 'Ruta was successfully created.' }
         format.json { render :show, status: :created, location: @ruta }
         @paradas = Parada.where(:id => params[:grupo_paradas])
-        @rutas.parada << @paradas 
+        @ruta.parada << @paradas 
       else
         format.html { render :new }
         format.json { render json: @ruta.errors, status: :unprocessable_entity }

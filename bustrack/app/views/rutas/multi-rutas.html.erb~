@@ -1,54 +1,6 @@
 <div id="control_panel" style="float:left;width:20%;text-align:left;padding-top:20px">
 
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Nombre:</strong>
-  <%= @ruta.nombre %>
-</p>
-
-<p>
-  <strong>Precio:</strong>
-  <%= @ruta.precio %>
-</p>
-
-<p>
-  <strong>Inicio lat:</strong>
-  <%= @ruta.inicio_lat %>
-</p>
-
-<p>
-  <strong>Inicio long:</strong>
-  <%= @ruta.inicio_long %>
-</p>
-
-<p>
-  <strong>Fin lat:</strong>
-  <%= @ruta.fin_lat %>
-</p>
-
-<p>
-  <strong>Fin long:</strong>
-  <%= @ruta.fin_long %>
-</p>
-
-<p>
-  <strong>Horario:</strong>
-  <%= @ruta.horario %>
-</p>
-
-<p>
-  <strong>Frecuencia:</strong>
-  <%= @ruta.frecuencia %>
-</p>
-<p>
-  <% @ruta.parada.each do |parada| %>-
-      <%= parada.nombre%>
-  <% end %>
-</p>
-
-<%= link_to 'Edit', edit_ruta_path(@ruta) %> |
-<%= link_to 'Back', rutas_path %>
+<%= link_to 'Rutas', rutas_path %>
 <div id="directions_panel" style="margin:20px;background-color:#FFEE77;"></div>
 </div>
 
@@ -67,7 +19,9 @@ directionsDisplay = new google.maps.DirectionsRenderer();
           var end = "<%= @ruta.fin_lat %>,<%= @ruta.fin_long %>"
           var waypts = [];
 //en este for se agregan las paradas
-  <% @ruta.parada.each do |parada| %>
+    <%@rutas = Ruta.all%>
+  <% @rutas.each do |ruta| %>
+  <% ruta.parada.each do |parada| %>
 waypts.push({location:"<%= parada.latitud %>,<%= parada.longitud %>",stopover:true});
 <% end %>
 //var request es la variable mas importante ya que en ella se colocan el principio y el final de las rutas ademas de que los waypts que en nuestro caso lo veria como paradas

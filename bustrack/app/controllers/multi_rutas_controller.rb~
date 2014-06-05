@@ -1,0 +1,74 @@
+class Multi_RutasController < ApplicationController
+  before_action :set_multi_ruta, only: [:show, :edit, :update, :destroy]
+
+  # GET /multi_rutas
+  # GET /multi_rutas.json
+  def index
+    @multi_rutas = multi_ruta.all
+  end
+
+  # GET /multi_rutas/1
+  # GET /multi_rutas/1.json
+  def show
+  end
+
+  # GET /multi_rutas/new
+  def new
+    @multi_ruta = multi_ruta.new
+  end
+
+  # GET /multi_rutas/1/edit
+  def edit
+  end
+
+  # POST /multi_rutas
+  # POST /multi_rutas.json
+  def create
+    @multi_ruta = multi_ruta.new(multi_ruta_params)
+
+    respond_to do |format|
+      if @multi_ruta.save
+        format.html { redirect_to @multi_ruta, notice: 'multi_ruta was successfully created.' }
+        format.json { render :show, status: :created, location: @multi_ruta }
+      else
+        format.html { render :new }
+        format.json { render json: @multi_ruta.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /multi_rutas/1
+  # PATCH/PUT /multi_rutas/1.json
+  def update
+    respond_to do |format|
+      if @multi_ruta.update(multi_ruta_params)
+        format.html { redirect_to @multi_ruta, notice: 'multi_ruta was successfully updated.' }
+        format.json { render :show, status: :ok, location: @multi_ruta }
+      else
+        format.html { render :edit }
+        format.json { render json: @multi_ruta.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /multi_rutas/1
+  # DELETE /multi_rutas/1.json
+  def destroy
+    @multi_ruta.destroy
+    respond_to do |format|
+      format.html { redirect_to multi_rutas_url, notice: 'multi_ruta was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_multi_rutas
+      @multi_ruta = multi_ruta.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def multi_ruta_params
+      params[:multi_ruta]
+    end
+end

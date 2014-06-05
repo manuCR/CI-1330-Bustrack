@@ -1,0 +1,33 @@
+<%= form_for(@parada) do |f| %>
+  <% if @parada.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@parada.errors.count, "error") %> prohibited this parada from being saved:</h2>
+
+      <ul>
+      <% @parada.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :techo %><br>
+    <%= f.check_box :techo %>
+  </div>
+  <div class="field">
+    <%= f.label :latitud %><br>
+    <%= f.text_field :latitud %>
+  </div>
+  <div class="field">
+    <%= f.label :longitud %><br>
+    <%= f.text_field :longitud %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

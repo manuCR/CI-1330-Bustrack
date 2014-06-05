@@ -1,0 +1,79 @@
+<div id="map-canvas" style="float:left;width:70%;height:100%;"></div>
+<div id="control_panel" style="float:right;width:30%;text-align:left;padding-top:20px">
+  <div style="margin:20px;border-width:2px;">
+    <b>Start:</b>
+    <select id="start">
+      <option value= "<%= @curso.sigla %>"  ><%= @curso.nombre %></option>
+    </select>
+    <br>
+    <b>Waypoints:</b> <br>
+    <i>(Ctrl-Click for multiple selection)</i> <br>
+    <select multiple id="waypoints">
+      <option value="9.918549,-84.104548">Parada0</option>
+      <option value="9.913507,-84.103476">Parada1</option>
+      <option value="9.915801,-84.102586">Parada2</option>
+      <option value="9.939051,-84.051768">Parada3</option>
+    </select>
+    <br>
+    <b>End:</b>
+    <select id="end">
+      <option value="9.935149,-84.051142">UCR</option>
+    </select>
+    <br>
+    <input type="submit" onclick="calcRoute();">
+  </div>
+  <div id="directions_panel" style="margin:20px;background-color:#FFEE77;"></div>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Edit', edit_mapa_path(@mapa) %> |
+<%= link_to 'Back', mapas_path %>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script>
+      var directionsDisplay;
+      var directionsService = new google.maps.DirectionsService();
+      var map;
+   function calcRoute() {
+          var start = document.getElementById('start').value;
+          var end = document.getElementById('end').value;
+          var waypts = [];
+          var checkboxArray = document.getElementById('waypoints');
+//en este for se verifican las opciones marcadas de las paradas y se agreagan a la variable waypts
+          for (var i = 0; i < checkboxArray.length; i++) {
+              if (checkboxArray.options[i].selected == true) {
+                  waypts.push({
+                      location:checkboxArray[i].value,
+                      stopover:true});
+              }
+          }
+//var request es la variable mas importante ya que en ella se colocan el principio y el final de las rutas ademas de que los waypts que en nuestro caso lo veria como paradas
+          var request = {
+              origin: start,
+              destination: end,
+              waypoints: waypts,
+              optimizeWaypoints: false,
+              travelMode: google.maps.TravelMode.DRIVING
+          };
+//aque se llama al metodo para dibujar el mapa
+          directionsService.route(request, function(response, status) {
+              if (status == google.maps.DirectionsStatus.OK) {
+                  directionsDisplay.setDirections(response);
+                  var route = response.routes[0];
+                  var summaryPanel = document.getElementById('directions_panel');
+                  summaryPanel.innerHTML = '';
+                  // For each route, display summary information.
+                  for (var i = 0; i < route.legs.length; i++) {
+                      var routeSegment = i + 1;
+                      summaryPanel.innerHTML += '<b>Segmento de ruta: ' + routeSegment + '</b><br>';
+                      summaryPanel.innerHTML += route.legs[i].start_address + ' hacia ';
+                      summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+                      summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+                  }
+              }
+          });
+      }
+</script>
+
+

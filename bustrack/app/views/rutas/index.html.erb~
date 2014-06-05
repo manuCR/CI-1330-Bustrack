@@ -41,4 +41,5 @@
 </table>
 
 <br>
+<a href='multiples_rutas'><font size="4"> Rutas </a>
 <p><%= link_to 'New Ruta', new_ruta_path %></p>

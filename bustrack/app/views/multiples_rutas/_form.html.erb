@@ -1,0 +1,17 @@
+<%= form_for(@multiples_ruta) do |f| %>
+  <% if @multiples_ruta.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@multiples_ruta.errors.count, "error") %> prohibited this multiples_ruta from being saved:</h2>
+
+      <ul>
+      <% @multiples_ruta.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

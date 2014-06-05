@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :identities
+
   resources :welcomes
   root'welcomes#index'
   resources :paradas

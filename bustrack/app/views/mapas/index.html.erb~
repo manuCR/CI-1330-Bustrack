@@ -1,11 +1,31 @@
-<div id="header" style="margin-bottom:0px;border-width:5px;border-style:double;border-radius: 15px;border-top-left-radius: 10px;font-family:Book Antiqua; width:100%;height: 77px;color:#ffffff" xmlns="http://www.w3.org/1999/html">
+<%= stylesheet_link_tag "welcome" %>
 
-  <h2 style="margin-left: 15px"><strong>BUS TRACK</strong></h2>
-  <p style="margin-left: 15px;font-family: Brush Script MT;"><i><font size="4">Que no te deje el bus</font></i></p>
+<div class="pure-menu pure-menu-open pure-menu-horizontal" style="background-color:#424242;height: 32px;">
+
+
+<ul>
+        <li><a href="#">Mi perfil</a></li>
+        <li><%= link_to "Create an account", "/auth/identity/register" %></li>
+        <li><%= link_to "login", "/auth/identity" %></li>
+
+</ul>	
 
 </div>
 
-    }
+<div class="pure-menu pure-menu-open pure-menu-horizontal" >
+
+<!--<%= image_tag "logo.png", {width: 40, height:50, bottom:0} %>-->
+    <ul>
+        <li><a href='welcomes'><font size="4"> Home </font></a></li>
+        <li><a href='rutas'><font size="4"> Rutas </font></a></li>
+        <li><a href="#"><font size="4"> Mapa</font></a></li>
+        <li><a href="#"><font size="4"> Bustrack </font></a></li>
+        <li><a href="#"> <input type="text" style="width:120px;heigth:50"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</input> </a></li>
+    </ul>
+</div>
+
+<div style="bottom:9.7%;left:3%;z-index:500;position:relative;margin=0px;width: 0px;height: 0px;"> <img src= "/assets/logo.png" width="60" height="60"></div>
+   
 
 <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
 <!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
@@ -31,6 +51,7 @@
 
     // Initialize esta funcion coloca el mapa en la posicion de nuestra preferencia Latitud Longuitud y ademas podemos agregar el zoom incial
     function initialize() {
+        directionsService = new google.maps.DirectionsService();
         directionsDisplay = new google.maps.DirectionsRenderer();
         var san_jose = new google.maps.LatLng(9.9333333, -84.0833333);
         var mapOptions = {

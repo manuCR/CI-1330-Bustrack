@@ -1,31 +1,69 @@
-<h1>Listing paradas</h1>
+<%= stylesheet_link_tag "welcome" %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Techo</th>
-      <th>Latitud</th>
-      <th>Longitud</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="pure-menu pure-menu-open pure-menu-horizontal" style="background-color:#424242;height: 32px;">
 
-  <tbody>
-    <% @paradas.each do |parada| %>
-      <tr>
-        <td><%= parada.nombre %></td>
-        <td><%= parada.techo %></td>
-        <td><%= parada.latitud %></td>
-        <td><%= parada.longitud %></td>
-        <td><%= link_to 'Show', parada %></td>
-        <td><%= link_to 'Edit', edit_parada_path(parada) %></td>
-        <td><%= link_to 'Destroy', parada, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+<ul>
+        <li><a href="#">Mi perfil</a></li>
+        <li><%= link_to "Create an account", "/auth/identity/register" %></li>
+        <li><%= link_to "login", "/auth/identity" %></li>
 
-<%= link_to 'New Parada', new_parada_path %>
+</ul>	
+
+</div>
+
+<div class="pure-menu pure-menu-open pure-menu-horizontal" >
+
+<!--<%= image_tag "logo.png", {width: 40, height:50, bottom:0} %>-->
+    <ul>
+        <li><a href="#"><font size="4"> Home </font></a></li>
+        <li><a href='rutas'><font size="4"> Rutas </font></a></li>
+        li><a href='mapas'><font size="4"> Mapa</font></a></li>
+        <li><a href="#"><font size="4"> Bustrack </font></a></li>
+        <li><a href="#"> <input type="text" style="width:120px;heigth:50"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</input> </a></li>
+    </ul>
+</div>
+
+
+
+    <div id="slideshow">
+   
+   
+    <div>
+     <img src="/assets/teatro.jpg" width=100% height="500">
+    </div>
+    <div>
+      <img src="/assets/teatro.jpg" width=100% height="500">
+    </div>
+</div>
+
+<div id = "search">
+
+<input id="from" placeholder="desde" list="fromresults"> </input>
+<datalist id="fromresults">
+<% Parada.all.each do |parada| %>
+<option value= <%= parada.nombre %> >
+<% end %>
+</datalist>
+
+<input name="to" placeholder="a"> </input>
+<!-- from.value -->
+
+</div>
+
+<div id="logo"> <img src= "/assets/logo.png" width="60" height="60"></div>
+
+<script>
+
+$("#slideshow > div:gt(0)").hide();
+
+setInterval(function() {
+  $('#slideshow > div:first')
+    .fadeOut(1000)
+    .next()
+    .fadeIn(1000)
+    .end()
+    .appendTo('#slideshow');
+}, 7000);
+
+</script>

@@ -1,4 +1,15 @@
 <div id="control_panel" style="float:left;width:20%;text-align:left;padding-top:20px">
+<select multiple id="Rutas">
+  <% @rutas.each do |ruta| %>
+<option type="checkbox" value="<%= ruta.inicio_lat %>,<%= ruta.inicio_long %>/
+<%= ruta.fin_lat %>,<%= ruta.fin_long %>
+<% ruta.parada.each do |parada| %>
+/<%= parada.latitud %>,<%= parada.longitud %>
+<% end %>
+"><%= ruta.nombre %></option>
+<% end %>
+</select><br>
+<input type="submit" onclick="loadScript();">
 
 <div id="directions_panel" style="margin:20px;background-color:#FFEE77;"></div>
 </div>
@@ -12,31 +23,54 @@
           var mapOptions;
  	  directionsService = new google.maps.DirectionsService();
           map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-  <% @rutas.each do |ruta| %>
-          directionsDisplay<%=ruta.id%> = new google.maps.DirectionsRenderer();
-          directionsDisplay<%=ruta.id%>.setMap(map);
-          var start = "<%= ruta.inicio_lat %>,<%= ruta.inicio_long %>";
-          var end = "<%= ruta.fin_lat %>,<%= ruta.fin_long %>"
-          var waypts = [];
-//en este for se agregan las paradas
-  <% ruta.parada.each do |parada| %>
-waypts.push({location:"<%= parada.latitud %>,<%= parada.longitud %>",stopover:true});
-<% end %>
-//var request es la variable mas importante ya que en ella se colocan el principio y el final de las rutas ademas de que los waypts que en nuestro caso lo veria como paradas
-          var request = {
-              origin: start,
-              destination: end,
-              waypoints: waypts,
-              optimizeWaypoints: true,
-              travelMode: google.maps.TravelMode.DRIVING
-          };
-//aque se llama al metodo para dibujar el mapa
-          directionsService.route(request, function(response, status) {
-              if (status == google.maps.DirectionsStatus.OK) {
-                  directionsDisplay<%=ruta.id%>.setDirections(response);
-              }
-          });
-      <% end %>
+          directionsDisplay = []
+          var checkboxArray = document.getElementById('Rutas');
+          var count = 0;
+          var checkboxlength = checkboxArray.length;
+          for (var i = 0; i < checkboxlength; i++) {
+      	     if(checkboxArray.options[i].selected == true){
+     	        count++
+             }
+          }
+          if(count >= 2){
+             window.alert("El maximo de rutas selecionadas no puede ser superior a 10");
+          }
+          else{
+             count = 0;
+             for (var i = 0; i < checkboxlength; i++) {
+      	        if(checkboxArray.options[i].selected == true){
+     	           directionsDisplay.push(new google.maps.DirectionsRenderer());
+ 	           directionsDisplay[count++].setMap(map);
+                }
+             }
+             count = 0;
+             for(var k = 0; k < checkboxlength; k++){
+	        if(checkboxArray.options[k].selected == true){
+	           var res = checkboxArray[k].value.split("/");
+                   var start = res[0];
+                   var end = res[1];
+                   for (var j = 2; j < res.length; j++) {
+                      var waypts = [];
+                      waypts.push({
+                       location:res[j],
+                       stopover:true});   
+	           }
+                   var request = {
+                      origin: start,
+                      destination: end,
+                      waypoints: waypts,
+                      optimizeWaypoints: true,
+                      travelMode: google.maps.TravelMode.DRIVING
+                   };
+		//aque se llama al metodo para dibujar el mapa
+                   directionsService.route(request, function(response, status) {
+                      if (status == google.maps.DirectionsStatus.OK) {
+                         directionsDisplay[count++].setDirections(response);
+                      }
+                   });
+                }
+	     }
+         }
       }
       function loadScript() {
          var script = document.createElement('script');
@@ -45,7 +79,6 @@ waypts.push({location:"<%= parada.latitud %>,<%= parada.longitud %>",stopover:tr
          'callback=calcRoute';
          document.body.appendChild(script);
       }
-      $(document).ready(function () { loadScript() });
 </script>
 <div id="map-canvas" style="float:left;width:70%;height:100%;"></div>
 <div id="left_panel" style="float:left;width:10%;text-align:left;padding-top:20px"></div>

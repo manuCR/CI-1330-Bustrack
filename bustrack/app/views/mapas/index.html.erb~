@@ -24,7 +24,7 @@
     </ul>
 </div>
 
-<div style="bottom:9.7%;left:3%;z-index:500;position:relative;margin=0px;width: 0px;height: 0px;"> <img src= "/assets/logo.png" width="60" height="60"></div>
+<div style="bottom:9.3%;left:3%;z-index:500;position:relative;margin=0px;width: 0px;height: 0px;"> <img src= "/assets/logo.png" width="60" height="60"></div>
    
 
 <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
@@ -92,6 +92,7 @@
         var end = document.getElementById('end').value;
         var waypts = [];
         var checkboxArray = document.getElementById('waypoints');
+window.alert(checkboxArray.length);
 //en este for se verifican las opciones marcadas de las paradas y se agreagan a la variable waypts
         for (var i = 0; i < checkboxArray.length; i++) {
             if (checkboxArray.options[i].selected == true) {

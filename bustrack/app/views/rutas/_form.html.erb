@@ -29,11 +29,19 @@
   </div>
   <div>
      <%= f.label :parada_inicial %>
-     <%= select_tag "parada_inicial", options_from_collection_for_select(Parada.all, 'id', 'nombre',@inicial.id), include_blank: true %>
+     <% if @inicial.nil? %>
+        <%= select_tag "parada_inicial", options_from_collection_for_select(Parada.all, 'id', 'nombre'), include_blank: true %>
+     <% else %>
+        <%= select_tag "parada_inicial", options_from_collection_for_select(Parada.all, 'id', 'nombre',@inicial.id), include_blank: true %>
+     <% end %>
   </div>
   <div>
-     <%= f.label :parada_final%>
-     <%= select_tag "parada_final", options_from_collection_for_select(Parada.all, 'id', 'nombre',@final.id), include_blank: true %>
+     <%= f.label :parada_inicial %>
+     <% if @final.nil? %>
+        <%= select_tag "parada_inicial", options_from_collection_for_select(Parada.all, 'id', 'nombre'), include_blank: true %>
+     <% else %>
+        <%= select_tag "parada_inicial", options_from_collection_for_select(Parada.all, 'id', 'nombre',@final.id), include_blank: true %>
+     <% end %>
   </div>
   <div class="field">
     <%= f.label :frecuencia %><br>

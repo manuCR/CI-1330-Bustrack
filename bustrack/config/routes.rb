@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users
+  resources :identities
+
   resources :welcomes
   root'welcomes#index'
-  resources :rutas
   resources :paradas
+  resources :rutas
   resources :mapas
-  resources :identities
   resources :multiples_rutas
-  resources :ruta_paradas
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

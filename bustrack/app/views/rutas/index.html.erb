@@ -18,6 +18,8 @@
     <% @rutas.each do |ruta| %>
       <tr>
         <% @otras = [] %>
+        <% @final = nil%>
+        <% @inicial = nil%>
         <% ruta.ruta_parada.each do |ruta_parada| %>
            <% if ruta_parada.tipo == 1 %>
               <% @inicial = ruta_parada.parada%>

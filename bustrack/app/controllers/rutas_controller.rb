@@ -24,6 +24,7 @@ class RutasController < ApplicationController
   # POST /rutas
   # POST /rutas.json
   def create
+    @ruta = Ruta.new(ruta_params)
     respond_to do |format|
        if params[:parada_inicial] != ""
           @inicio = Parada.find(params[:parada_inicial])
@@ -39,8 +40,10 @@ class RutasController < ApplicationController
           @ruta_parada.tipo = -1
           @ruta_parada.save
        end
-       @paradas = Parada.where(:id => params[:grupo_paradas])
-       @ruta.parada << @paradas
+       if params[:grupo_paradas] != ""
+          @paradas = Parada.where(:id => params[:grupo_paradas])
+          @ruta.parada << @paradas
+       end
        if @ruta.save
          format.html { redirect_to @ruta, notice: 'Ruta was successfully created.' }
          format.json { render :show, status: :created, location: @ruta }
@@ -70,8 +73,10 @@ class RutasController < ApplicationController
           @ruta_parada.tipo = -1
           @ruta_parada.save
        end
-       @paradas = Parada.where(:id => params[:grupo_paradas])
-       @ruta.parada << @paradas
+       if params[:grupo_paradas] != ""
+          @paradas = Parada.where(:id => params[:grupo_paradas])
+          @ruta.parada << @paradas
+       end
        if @ruta.update(ruta_params)
          format.html { redirect_to @ruta, notice: 'Ruta was successfully updated.' }
          format.json { render :show, status: :ok, location: @ruta }

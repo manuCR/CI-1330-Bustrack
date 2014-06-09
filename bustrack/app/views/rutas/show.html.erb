@@ -69,6 +69,7 @@
       var map;
 
    function calcRoute() {
+   <%if !@inicial.nil? and !@final.nil?%>
 directionsDisplay = new google.maps.DirectionsRenderer();
           var mapOptions;
   directionsService = new google.maps.DirectionsService();
@@ -113,6 +114,7 @@ waypts.push({location:"<%= parada.latitud %>,<%= parada.longitud %>",stopover:tr
          script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
          'callback=calcRoute';
          document.body.appendChild(script);
+      <% end %>
       }
       $(document).ready(function () { loadScript() });
 </script>

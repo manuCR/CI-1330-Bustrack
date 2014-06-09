@@ -1,49 +1,8 @@
-<%= stylesheet_link_tag "welcome" %>
-
-<div class="pure-menu pure-menu-open pure-menu-horizontal" style="background-color:#424242;height: 32px;">
-
-
-<ul>
-        <li><a href="#">Mi perfil</a></li>
-        <% if user_signed_in? %>
-        <li>
-            <%= current_user.email %>
-        </li>
-        <li>
-            <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-        </li>
-          <% else %>
-        <li>
-              <%= link_to "Sign up", new_user_registration_path %>
-        </li>
-        <li>
-              <%= link_to "Sign in", new_user_session_path %>
-        </li>
-          <% end %>
 
 
 
-</ul>	
 
-</div>
 
-<div class="pure-menu pure-menu-open pure-menu-horizontal" >
-
-<!--<%= image_tag "logo.png", {width: 40, height:50, bottom:0} %>-->
-    <ul>
-        <li><a href="#"><font size="4"> Home </font></a></li>
-        <li><a href='rutas'><font size="4"> Rutas </font></a></li>
-        <li><a href="#"><font size="4"> Bustrack </font></a></li>
-        <li><a href="#"> <input id="buscador" placeholder="buscar" list="resultadosDelSearch" style="width:120px;heigth:50"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</input> 
-																	<datalist id="resultadosDelSearch">
-																		<% Ruta.all.each do |parada| %>
-																			<option value= <%= parada.nombre %> >
-																		<% end %>
-																	</datalist>
-				</a></li>
-
-    </ul>
-</div>
 
 
 
@@ -77,7 +36,7 @@
 
 </div>
 <!-- from.value < Parada.attribute_names %>-->
-<div id="logo"> <img src= "/assets/logo.png" width="60" height="60"></div>
+<!--<div id="logo" style="width=0px; height=0px"> <img src= "/assets/logo.png" width="60" height="60"></div>-->
 
 <script>
 

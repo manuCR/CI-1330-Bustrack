@@ -18,7 +18,7 @@ class RutasControllerTest < ActionController::TestCase
 
   test "should create ruta" do
     assert_difference('Ruta.count') do
-      post :create, ruta: { fin_lat: @ruta.fin_lat, fin_long: @ruta.fin_long, frecuencia: @ruta.frecuencia, horario: @ruta.horario, inicio_lat: @ruta.inicio_lat, inicio_long: @ruta.inicio_long, nombre: @ruta.nombre, precio: @ruta.precio }
+      post :create, ruta: { frecuencia: @ruta.frecuencia, horario: @ruta.horario, nombre: @ruta.nombre, precio: @ruta.precio }
     end
 
     assert_redirected_to ruta_path(assigns(:ruta))
@@ -35,7 +35,7 @@ class RutasControllerTest < ActionController::TestCase
   end
 
   test "should update ruta" do
-    patch :update, id: @ruta, ruta: { fin_lat: @ruta.fin_lat, fin_long: @ruta.fin_long, frecuencia: @ruta.frecuencia, horario: @ruta.horario, inicio_lat: @ruta.inicio_lat, inicio_long: @ruta.inicio_long, nombre: @ruta.nombre, precio: @ruta.precio }
+    patch :update, id: @ruta, ruta: { frecuencia: @ruta.frecuencia, horario: @ruta.horario, nombre: @ruta.nombre, precio: @ruta.precio }
     assert_redirected_to ruta_path(assigns(:ruta))
   end
 

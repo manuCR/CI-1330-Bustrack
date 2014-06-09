@@ -10,42 +10,45 @@
       </ul>
     </div>
   <% end %>
+<% @otras = [] %>
+<% @ruta.ruta_parada.each do |ruta_parada| %>
+   <% if ruta_parada.tipo == 1 %>
+      <% @inicial = ruta_parada.parada%>
+   <% elsif ruta_parada.tipo == -1%>
+      <% @final = ruta_parada.parada%>
+   <% else %>
+      <% @otras.push(ruta_parada.parada)%>
+   <% end %>
+ <% end %>
+
 
   <div class="field">
     <%= f.label :nombre %><br>
     <%= f.text_field :nombre %>
+  </div>
+  <div>
+     <%= f.label :parada_inicial %>
+     <%= select_tag "parada_inicial", options_from_collection_for_select(Parada.all, 'id', 'nombre',@inicial.id), include_blank: true %>
+  </div>
+  <div>
+     <%= f.label :parada_final%>
+     <%= select_tag "parada_final", options_from_collection_for_select(Parada.all, 'id', 'nombre',@final.id), include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :frecuencia %><br>
+    <%= f.text_field :frecuencia %>
   </div>
   <div class="field">
     <%= f.label :precio %><br>
     <%= f.number_field :precio %>
   </div>
   <div class="field">
-    <%= f.label :inicio_lat %><br>
-    <%= f.text_field :inicio_lat %>
-  </div>
-  <div class="field">
-    <%= f.label :inicio_long %><br>
-    <%= f.text_field :inicio_long %>
-  </div>
-  <div class="field">
-    <%= f.label :fin_lat %><br>
-    <%= f.text_field :fin_lat %>
-  </div>
-  <div class="field">
-    <%= f.label :fin_long %><br>
-    <%= f.text_field :fin_long %>
-  </div>
-  <div class="field">
     <%= f.label :horario %><br>
     <%= f.text_field :horario %>
   </div>
-  <div class="field">
-    <%= f.label :frecuencia %><br>
-    <%= f.text_field :frecuencia %>
-  </div>
   <div>
      <%= f.label :paradas %>
-     <%= select_tag "grupo_paradas", options_from_collection_for_select(Parada.all, 'id', 'nombre',@rutas.parada.map{ |j| j.id }), :multiple => true %>
+     <%= select_tag "grupo_paradas", options_from_collection_for_select(Parada.all, 'id', 'nombre',@otras.map{ |r| r.id }), :multiple => true %>
   </div>
   <div class="actions">
     <%= f.submit %>

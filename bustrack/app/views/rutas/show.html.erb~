@@ -2,9 +2,26 @@
 
 <p id="notice"><%= notice %></p>
 
+<% @otras = [] %>
+<% @ruta.ruta_parada.each do |ruta_parada| %>
+   <% if ruta_parada.tipo == 1 %>
+      <% @inicial = ruta_parada.parada%>
+   <% elsif ruta_parada.tipo == -1%>
+      <% @final = ruta_parada.parada%>
+   <% else %>
+      <% @otras.push(ruta_parada.parada)%>
+   <% end %>
+<% end %>
+
+
 <p>
   <strong>Nombre:</strong>
   <%= @ruta.nombre %>
+</p>
+
+<p>
+  <strong>Frecuencia:</strong>
+  <%= @ruta.frecuencia %>
 </p>
 
 <p>
@@ -13,39 +30,33 @@
 </p>
 
 <p>
-  <strong>Inicio lat:</strong>
-  <%= @ruta.inicio_lat %>
-</p>
-
-<p>
-  <strong>Inicio long:</strong>
-  <%= @ruta.inicio_long %>
-</p>
-
-<p>
-  <strong>Fin lat:</strong>
-  <%= @ruta.fin_lat %>
-</p>
-
-<p>
-  <strong>Fin long:</strong>
-  <%= @ruta.fin_long %>
-</p>
-
-<p>
   <strong>Horario:</strong>
   <%= @ruta.horario %>
 </p>
 
 <p>
-  <strong>Frecuencia:</strong>
-  <%= @ruta.frecuencia %>
-</p>
-<p>
-  <% @ruta.parada.each do |parada| %>-
-      <%= parada.nombre%>
+  <strong>Parada Inicial:</strong>
+  <% if !@inicial.nil?%>
+     <%= @inicial.nombre %>
   <% end %>
 </p>
+
+<p>
+  <strong>Parada Final:</strong>
+  <% if !@final.nil?%>
+     <%= @final.nombre %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Paradas:</strong>
+  <% if !@otras.nil?%>
+     <% @otras.each do |parada|%>
+        <%= parada.nombre %>-
+     <% end %>
+  <% end %>
+</p>
+
 
 <%= link_to 'Edit', edit_ruta_path(@ruta) %> |
 <%= link_to 'Back', rutas_path %>
@@ -60,14 +71,14 @@
    function calcRoute() {
 directionsDisplay = new google.maps.DirectionsRenderer();
           var mapOptions;
- 	  directionsService = new google.maps.DirectionsService();
+  directionsService = new google.maps.DirectionsService();
           map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
           directionsDisplay.setMap(map);
-          var start = "<%= @ruta.inicio_lat %>,<%= @ruta.inicio_long %>";
-          var end = "<%= @ruta.fin_lat %>,<%= @ruta.fin_long %>"
+          var start = "<%= @inicial.latitud %>,<%= @inicial.longitud %>";
+          var end = "<%= @final.latitud %>,<%= @final.longitud %>"
           var waypts = [];
 //en este for se agregan las paradas
-  <% @ruta.parada.each do |parada| %>
+  <% @otras.each do |parada| %>
 waypts.push({location:"<%= parada.latitud %>,<%= parada.longitud %>",stopover:true});
 <% end %>
 //var request es la variable mas importante ya que en ella se colocan el principio y el final de las rutas ademas de que los waypts que en nuestro caso lo veria como paradas
@@ -106,4 +117,4 @@ waypts.push({location:"<%= parada.latitud %>,<%= parada.longitud %>",stopover:tr
       $(document).ready(function () { loadScript() });
 </script>
 <div id="map-canvas" style="float:left;width:70%;height:100%;"></div>
-<div id="left_panel" style="float:left;width:10%;text-align:left;padding-top:20px">
+<div id="left_panel" style="float:left;width:10%;text-align:left;padding-top:20px"></div>

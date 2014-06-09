@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140605144725) do
+ActiveRecord::Schema.define(version: 20140609001435) do
 
   create_table "identities", force: true do |t|
     t.string   "nombre"
@@ -35,20 +35,17 @@ ActiveRecord::Schema.define(version: 20140605144725) do
     t.datetime "updated_at"
   end
 
-  create_table "paradas_rutas", id: false, force: true do |t|
-    t.integer "parada_id", null: false
-    t.integer "ruta_id",   null: false
+  create_table "ruta_paradas", force: true do |t|
+    t.integer "ruta_id"
+    t.integer "parada_id"
+    t.integer "tipo"
   end
 
   create_table "rutas", force: true do |t|
     t.string   "nombre"
-    t.integer  "precio"
-    t.float    "inicio_lat"
-    t.float    "inicio_long"
-    t.float    "fin_lat"
-    t.float    "fin_long"
-    t.string   "horario"
     t.string   "frecuencia"
+    t.integer  "precio"
+    t.string   "horario"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

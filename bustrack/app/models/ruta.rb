@@ -1,3 +1,4 @@
 class Ruta < ActiveRecord::Base
-  has_and_belongs_to_many :parada
+  has_many :ruta_parada
+  has_many :parada, through: :ruta_parada
 end

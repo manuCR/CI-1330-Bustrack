@@ -12,6 +12,18 @@ paradas = Parada.create({nombre: 'UCR-Cartago',techo: true,
 paradas = Parada.create({nombre: 'UCR-Pavas',techo: true, 
                          latitud:9.934813, longitud:-84.051813 }) 
 
-rutas = Ruta.create({nombre: 'UCR-Alajuela',precio: 740,inicio_lat: 9.935518,
-                    inicio_long: -84.049777, fin_lat: 10.014628,
-                    fin_long: -84.217198,horario: '7-10', frecuencia: '1 hora'})
+paradas = Parada.create({nombre: 'UCR-Alajuela',techo: true, 
+                         latitud:9.935518, longitud:-84.049777 }) 
+
+paradas = Parada.create({nombre: 'Alajuela-Final',techo: false, 
+                         latitud:10.014628, longitud:-84.217198 }) 
+
+paradas = Parada.create({nombre: 'UCR-hatillo',techo: false, 
+                         latitud:9.935149, longitud:-84.051142 }) 
+
+paradas = Parada.create({nombre: 'Biblioteca-Hatillo',techo: false, 
+                         latitud:9.920974, longitud:-84.103341 }) 
+
+rutas = Ruta.create({nombre: 'UCR-Alajuela', frecuencia: '1 hora',precio: 740,horario: '7-10'})
+
+rutas = Ruta.create({nombre: 'UCR-Hatillo', frecuencia: '30 min',precio: 330,horario: '5:30-22:00'})

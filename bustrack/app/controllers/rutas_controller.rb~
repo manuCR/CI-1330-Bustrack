@@ -24,35 +24,62 @@ class RutasController < ApplicationController
   # POST /rutas
   # POST /rutas.json
   def create
-    @ruta = Ruta.new(ruta_params)
     respond_to do |format|
-      if @ruta.save
-        format.html { redirect_to @ruta, notice: 'Ruta was successfully created.' }
-        format.json { render :show, status: :created, location: @ruta }
-        @paradas = Parada.where(:id => params[:grupo_paradas])
-        @rutas.parada << @paradas 
-      else
-        format.html { render :new }
-        format.json { render json: @ruta.errors, status: :unprocessable_entity }
-      end
-    end
+       if params[:parada_inicial] != ""
+          @inicio = Parada.find(params[:parada_inicial])
+          @ruta.parada.push(@inicio)
+          @ruta_parada = @ruta.ruta_parada.find_by(parada_id: @inicio.id)
+          @ruta_parada.tipo = 1
+          @ruta_parada.save
+       end
+       if params[:parada_final] != ""
+          @final = Parada.find(params[:parada_final])
+          @ruta.parada.push(@final)
+          @ruta_parada = @ruta.ruta_parada.find_by(parada_id: @final.id)
+          @ruta_parada.tipo = -1
+          @ruta_parada.save
+       end
+       @paradas = Parada.where(:id => params[:grupo_paradas])
+       @ruta.parada << @paradas
+       if @ruta.save
+         format.html { redirect_to @ruta, notice: 'Ruta was successfully created.' }
+         format.json { render :show, status: :created, location: @ruta }
+       else
+         format.html { render :new }
+         format.json { render json: @ruta.errors, status: :unprocessable_entity }
+       end
+     end
   end
 
   # PATCH/PUT /rutas/1
   # PATCH/PUT /rutas/1.json
   def update
     respond_to do |format|
-      if @ruta.update(ruta_params)
-        format.html { redirect_to @ruta, notice: 'Ruta was successfully updated.' }
-        format.json { render :show, status: :ok, location: @ruta }
-	@paradas = Parada.where(:id => params[:grupo_paradas])
-        @ruta.parada.destroy_all
-        @ruta.parada << @paradas
-      else
-        format.html { render :edit }
-        format.json { render json: @ruta.errors, status: :unprocessable_entity }
-      end
-    end
+       @ruta.parada.destroy_all
+       if params[:parada_inicial] != ""
+          @inicio = Parada.find(params[:parada_inicial])
+          @ruta.parada.push(@inicio)
+          @ruta_parada = @ruta.ruta_parada.find_by(parada_id: @inicio.id)
+          @ruta_parada.tipo = 1
+          @ruta_parada.save
+       end
+       if params[:parada_final] != ""
+          @final = Parada.find(params[:parada_final])
+          @ruta.parada.push(@final)
+          @ruta_parada = @ruta.ruta_parada.find_by(parada_id: @final.id)
+          @ruta_parada.tipo = -1
+          @ruta_parada.save
+       end
+       @paradas = Parada.where(:id => params[:grupo_paradas])
+       @ruta.parada << @paradas
+       if @ruta.update(ruta_params)
+         format.html { redirect_to @ruta, notice: 'Ruta was successfully updated.' }
+         format.json { render :show, status: :ok, location: @ruta }
+       else
+         format.html { render :edit }
+         format.json { render json: @ruta.errors, status: :unprocessable_entity }
+       end
+     end
   end
 
   # DELETE /rutas/1
@@ -73,6 +100,6 @@ class RutasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ruta_params
-      params.require(:ruta).permit(:nombre, :precio, :inicio_lat, :inicio_long, :fin_lat, :fin_long, :horario, :frecuencia)
+      params.require(:ruta).permit(:nombre, :frecuencia, :precio, :horario)
     end
 end

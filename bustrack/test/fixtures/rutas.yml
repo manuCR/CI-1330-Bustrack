@@ -2,20 +2,12 @@
 
 one:
   nombre: MyString
-  precio: 1
-  inicio_lat: 1.5
-  inicio_long: 1.5
-  fin_lat: 1.5
-  fin_long: 1.5
-  horario: MyString
   frecuencia: MyString
+  precio: 1
+  horario: MyString
 
 two:
   nombre: MyString
-  precio: 1
-  inicio_lat: 1.5
-  inicio_long: 1.5
-  fin_lat: 1.5
-  fin_long: 1.5
-  horario: MyString
   frecuencia: MyString
+  precio: 1
+  horario: MyString

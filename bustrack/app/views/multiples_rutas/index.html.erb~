@@ -1,12 +1,27 @@
 <div id="control_panel" style="float:left;width:20%;text-align:left;padding-top:20px">
 <select multiple id="Rutas">
-  <% @rutas.each do |ruta| %>
-<option type="checkbox" value="<%= ruta.inicio_lat %>,<%= ruta.inicio_long %>/
-<%= ruta.fin_lat %>,<%= ruta.fin_long %>
-<% ruta.parada.each do |parada| %>
-/<%= parada.latitud %>,<%= parada.longitud %>
-<% end %>
-"><%= ruta.nombre %></option>
+<% @rutas.each do |ruta| %>
+   <% if !ruta.ruta_parada.nil? %>
+      <% @otras = [] %>
+      <% ruta.ruta_parada.each do |ruta_parada| %>
+         <% if ruta_parada.tipo == 1 %>
+            <% @inicial = ruta_parada.parada%>
+         <% elsif ruta_parada.tipo == -1%>
+            <% @final = ruta_parada.parada%>
+         <% else %>
+            <% @otras.push(ruta_parada.parada)%>
+         <% end %>
+      <% end %>
+   <% end %>
+   <% if !@inicial.nil? and !final.nil? %>
+   <option type="checkbox" value="
+      <%= @inicial.latitud %>,<%= @inicial.longitud %>/
+      <%= @final.latitud %>,<%= @final.longitud %>
+      <% @otras.each do |parada| %>
+         /<%= parada.latitud %>,<%= parada.longitud %>
+      <% end %>
+   "><%= ruta.nombre %></option>
+   <% end %>
 <% end %>
 </select><br>
 <input type="submit" onclick="loadScript();">
@@ -32,7 +47,7 @@
      	        count++
              }
           }
-          if(count => 2){
+          if(count >= 2){
              window.alert("El maximo de rutas selecionadas no puede ser superior a 10");
           }
           else{

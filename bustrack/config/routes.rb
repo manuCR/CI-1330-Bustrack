@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :rutas_usuarios
+
   devise_for :users
   resources :identities
 

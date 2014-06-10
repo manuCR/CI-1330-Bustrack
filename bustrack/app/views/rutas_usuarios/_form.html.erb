@@ -1,0 +1,17 @@
+<%= form_for(@rutas_usuario) do |f| %>
+  <% if @rutas_usuario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rutas_usuario.errors.count, "error") %> prohibited this rutas_usuario from being saved:</h2>
+
+      <ul>
+      <% @rutas_usuario.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,35 +1,8 @@
-<%= stylesheet_link_tag "welcome" %>
-
-<div class="pure-menu pure-menu-open pure-menu-horizontal" style="background-color:#424242;height: 32px;">
 
 
-<ul>
-        <li><a href="#">Mi perfil</a></li>
-        <li><%= link_to "Create an account", "/auth/identity/register" %></li>
-        <li><%= link_to "login", "/auth/identity" %></li>
 
-</ul>	
 
-</div>
 
-<div class="pure-menu pure-menu-open pure-menu-horizontal" >
-
-<!--<%= image_tag "logo.png", {width: 40, height:50, bottom:0} %>-->
-    <ul>
-        <li><a href="#"><font size="4"> Home </font></a></li>
-        <li><a href='rutas'><font size="4"> Rutas </font></a></li>
-        <li><a href='mapas'><font size="4"> Mapa</font></a></li>
-        <li><a href="#"><font size="4"> Bustrack </font></a></li>
-        <li><a href="#"> <input id="buscador" placeholder="buscar" list="resultadosDelSearch" style="width:120px;heigth:50"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</input> 
-																	<datalist id="resultadosDelSearch">
-																		<% Ruta.all.each do |parada| %>
-																			<option value= <%= parada.nombre %> >
-																		<% end %>
-																	</datalist>
-				</a></li>
-
-    </ul>
-</div>
 
 
 
@@ -40,7 +13,28 @@
      <img src="/assets/teatro.jpg" width=100% height="500">
     </div>
     <div>
-      <img src="/assets/teatro.jpg" width=100% height="500">
+      <img src="/assets/alajuela.jpg" width=100% height="500">
+    </div>
+    <div>
+      <img src="/assets/cartago.jpg" width=100% height="500">
+    </div>
+    <div>
+      <img src="/assets/limon.jpg" width=100% height="500">
+    </div>
+    <div>
+      <img src="/assets/guanacaste.jpg" width=100% height="500">
+    </div>
+    <div>
+      <img src="/assets/sanjose.jpg" width=100% height="500">
+    </div>
+    <div>
+      <img src="/assets/puntarenas.jpg" width=100% height="500">
+    </div>
+    <div>
+      <img src="/assets/heredia.jpg" width=100% height="500">
+    </div>
+    <div>
+      <img src="/assets/ucr.jpg" width=100% height="500">
     </div>
 </div>
 
@@ -60,11 +54,10 @@
 						<option value= <%= otra.nombre %> >
 				<% end %>
 		</datalist>
-			<% Parada.attribute_names %>
 
 </div>
-<!-- from.value -->
-<div id="logo"> <img src= "/assets/logo.png" width="60" height="60"></div>
+<!-- from.value < Parada.attribute_names %>-->
+<!--<div id="logo" style="width=0px; height=0px"> <img src= "/assets/logo.png" width="60" height="60"></div>-->
 
 <script>
 

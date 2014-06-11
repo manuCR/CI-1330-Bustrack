@@ -1,18 +1,13 @@
 Rails.application.routes.draw do
-  resources :rutas_usuarios
-
-
-  match '/auth/:provider/callback' => 'authentications#create', via: [:get, :post]
-
-  devise_for :users
-  resources :identities
-  resources :authentications
   resources :welcomes
   root'welcomes#index'
   resources :paradas
   resources :rutas
   resources :mapas
   resources :multiples_rutas
+  resources :rutas_usuarios
+  devise_for :users
+  resources :identities
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

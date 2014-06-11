@@ -1,33 +1,3 @@
-<%= stylesheet_link_tag "welcome" %>
-
-<div class="pure-menu pure-menu-open pure-menu-horizontal" style="background-color:#424242;height: 32px;">
-
-
-<ul>
-        <li><a href="#">Mi perfil</a></li>
-        <li><%= link_to "Create an account", "/auth/identity/register" %></li>
-        <li><%= link_to "login", "/auth/identity" %></li>
-
-</ul>	
-
-</div>
-
-<div class="pure-menu pure-menu-open pure-menu-horizontal" >
-
-<!--<%= image_tag "logo.png", {width: 40, height:50, bottom:0} %>-->
-    <ul>
-        <li><a href='welcomes'><font size="4"> Home </font></a></li>
-        <li><a href='rutas'><font size="4"> Rutas </font></a></li>
-        <li><a href='multiples_rutas'><font size="4"> Rutas Multiples </font></a></li>
-        <li><a href="#"><font size="4"> Mapa</font></a></li>
-        <li><a href="#"><font size="4"> Bustrack </font></a></li>
-        <li><a href="#"> <input type="text" style="width:120px;heigth:50"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</input> </a></li>
-    </ul>
-</div>
-
-<div style="bottom:9.3%;left:3%;z-index:500;position:relative;margin=0px;width: 0px;height: 0px;"> <img src= "/assets/logo.png" width="60" height="60"></div>
-   
-
 <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
 <!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 <!-- <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script> -->
@@ -40,15 +10,37 @@
 		var busGranadilla2;
     var busPipiolo;
     var busExpreso;
+    var alerts = [ 
+    {num : 1, app:'helloworld',message:'message'},
+    {num : 2, app:'helloagain',message:'another message'} 
+]
 
 		var places = {
-		  "San José": {
-		      location: "9.933091, -84.078570"
+		  "UCR-Cartago": {
+		      location: "9.935521, -84.050252"
 		  },
-		  "UCR": {
-		      location: "9.935149,-84.051142"
+		  "UCR-Pavas": {
+		     location: "9.934813,-84.051813"
+		  },
+		  
+		  "UCR-Alajuela": {
+		     location: "9.935518,-84.049777"
+		  },
+		  "Alajuela-Final": {
+		     location: "10.014628,-84.217198"
 		  }
-		};
+		  }; 
+		/*var places = [];
+		  	< Parada.all.each do |parada| >
+			var nom = "< parada.nombre >";
+			        console.log(nom);
+				var lat = < parada.latitud >;
+				var lon = < parada.longitud ;
+				var place = nom+'" : { location: "' + lat + ", " +lon+ '" }';
+				places.push(place);
+			< end >
+		  console.log(places);*/
+		
 
     // Initialize esta funcion coloca el mapa en la posicion de nuestra preferencia Latitud Longuitud y ademas podemos agregar el zoom incial
     function initialize() {
@@ -161,12 +153,16 @@
 	function searchToFrom(){
       var to = $('#to').val();
       var from = $('#from').val();
+      
 			var waypts = [];
       var checkboxArray = [start, end];
 			var start;
 			var end;
+			console.log(places[from].location);
+// 			//en vez del from in places debe hacer consulta a la bd
 			if (from in places) {
 				start = places[from].location;
+				
     	} else {
         alert(from +': ubicación desconocida');
     	}
@@ -235,10 +231,21 @@
   <br>
 
   <p id="searchTo"> To: </a>
-  <input id="to" type="search" size=10 />
+  <input id="to" type="search" list="resultadosDelTo" size=10 />
+  
+    <datalist id="resultadosDelTo">
+			<% Parada.all.each do |parada| %>
+				<option value= <%= parada.nombre %> >
+			<% end %>
+		</datalist>
 
   <p id="searchFrom"> From: </a>
-  <input id="from" type="search" size=10 /> 
+  <input id="from" type="search" list="resultadosDelFrom" size=10 /> 
+  <datalist id="resultadosDelFrom">
+			<% Parada.all.each do |otra| %>
+				<option value= <%= otra.nombre %> >
+			<% end %>
+		</datalist>
 	<br>
 	<br>
 	<input type="submit" onclick="searchToFrom()" value="Buscar">

@@ -5,11 +5,14 @@ source 'https://rubygems.org'
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+gem 'nifty-generators'
+gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-identity'
 gem 'devise'
+gem 'protected_attributes'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -56,3 +59,5 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+
+gem "mocha", group: :test

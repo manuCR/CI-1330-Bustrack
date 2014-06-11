@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   resources :rutas_usuarios
 
+
+  match '/auth/:provider/callback' => 'authentications#create', via: [:get, :post]
+
   devise_for :users
   resources :identities
-
+  resources :authentications
   resources :welcomes
   root'welcomes#index'
   resources :paradas

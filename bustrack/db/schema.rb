@@ -13,6 +13,18 @@
 
 ActiveRecord::Schema.define(version: 20140610165255) do
 
+  create_table "authentications", force: true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "index"
+    t.string   "create"
+    t.string   "destroy"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+
   create_table "identities", force: true do |t|
     t.string   "nombre"
     t.string   "email"

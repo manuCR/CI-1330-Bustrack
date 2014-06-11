@@ -107,7 +107,18 @@ waypts.push({location:"<%= parada.latitud %>,<%= parada.longitud %>",stopover:tr
                   }
               }
           });
+          var myLatLng = new google.maps.LatLng(<%= @inicial.latitud %>, <%= @inicial.longitud %>);
+          var infowindow = new google.maps.InfoWindow({
+             content: 'Frecuencia: <%= @ruta.frecuencia %>\nPrecio: <%= @ruta.precio %>\nHorario: <%= @ruta.horario %>',
+             position: myLatLng
+           });
+           google.maps.event.addListener(map, 'click', function() {
+              infowindow.open(map);
+              map.setCenter(myLatLng);
+           });
+
       }
+
       function loadScript() {
          var script = document.createElement('script');
          script.type = 'text/javascript';
@@ -117,6 +128,9 @@ waypts.push({location:"<%= parada.latitud %>,<%= parada.longitud %>",stopover:tr
       <% end %>
       }
       $(document).ready(function () { loadScript() });
+
+
+
 </script>
 <div id="map-canvas" style="float:left;width:70%;height:100%;"></div>
 <div id="left_panel" style="float:left;width:10%;text-align:left;padding-top:20px"></div>

@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 20140610165255) do
   end
 
   create_table "rutas_usuarios", force: true do |t|
+    t.integer  "ruta_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

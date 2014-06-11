@@ -61,3 +61,7 @@ end
 
 
 gem "mocha", group: :test
+
+group :development, :test do
+gem 'rspec-rails'
+end

@@ -1,0 +1,15 @@
+require 'rails_helper'
+
+RSpec.describe "paradas/show", :type => :view do
+  before(:each) do
+    @parada = assign(:parada, Parada.create!(
+       :nombre => 'Nombre',
+       :techo => 'false',
+       :latitud => '1.5',
+       :longitud => '1.5'))
+  end
+
+  it "renders attributes in <p>" do
+    render
+  end
+end

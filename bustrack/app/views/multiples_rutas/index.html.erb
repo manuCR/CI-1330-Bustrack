@@ -3,6 +3,8 @@
 <% @rutas.each do |ruta| %>
    <% if !ruta.ruta_parada.nil? %>
       <% @otras = [] %>
+      <% @inicial = nil %>
+      <% @final = nil %>
       <% ruta.ruta_parada.each do |ruta_parada| %>
          <% if ruta_parada.tipo == 1 %>
             <% @inicial = ruta_parada.parada%>

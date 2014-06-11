@@ -1,0 +1,19 @@
+require 'rails_helper'
+
+RSpec.describe "rutas/show", :type => :view do
+  before(:each) do
+    @ruta = assign(:ruta,( Ruta.create!(
+       :nombre => 'Nombre',
+       :frecuencia => 'Frecuencia',
+       :precio => '1',
+       :horario =>'Horario')))
+  end
+
+  it "renders attributes in <p>" do
+    render
+    rendered.should match(/Nombre/)
+    rendered.should match(/Frecuencia/)
+    rendered.should match(/1/)
+    rendered.should match(/Horario/)
+  end
+end

@@ -1,0 +1,26 @@
+require 'rails_helper'
+
+RSpec.describe "paradas/index", :type => :view do
+  before(:each) do
+    assign(:paradas, [
+      Parada.create!(
+       :nombre => 'Nombre',
+       :techo => 'false',
+       :latitud => '1.5',
+       :longitud => '1.6'),
+      Parada.create!(
+       :nombre => 'Nombre',
+       :techo => 'false',
+       :latitud => '1.5',
+       :longitud => '1.6')
+    ])
+  end
+
+  it "renders a list of paradas" do
+    render
+    assert_select "tr>td", :text => "Nombre".to_s, :count => 2
+    assert_select "tr>td", :text => "false".to_s, :count => 2
+    assert_select "tr>td", :text => "1.5".to_s, :count => 2
+    assert_select "tr>td", :text => "1.6".to_s, :count => 2
+  end
+end

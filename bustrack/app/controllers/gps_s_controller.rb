@@ -69,6 +69,6 @@ class GpsSController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gps_params
-      params.require(:gps).permit(:id_gps, :ultima_latitud, :ultima_logitud)
+      params.require(:gps).permit(:id_gps)
     end
 end

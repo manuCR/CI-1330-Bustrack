@@ -17,4 +17,6 @@
 
 ActiveSupport::Inflector.inflections do |inflect|
  inflect.irregular 'ruta', 'rutas'
+ inflect.irregular 'bus', 'buses'
+ inflect.irregular 'gps', 'gps_s'
 end

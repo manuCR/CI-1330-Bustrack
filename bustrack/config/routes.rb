@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   resources :rutas_usuarios
   devise_for :users
   resources :identities
-
+  resources :buses
+  resources :gps_s
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

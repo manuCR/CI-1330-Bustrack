@@ -11,9 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140611070745) do
+ActiveRecord::Schema.define(version: 20140615040341) do
 
-  create_table "demos", force: true do |t|
+  create_table "buses", force: true do |t|
+    t.integer  "ruta_id"
+    t.string   "placa"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "gps_s", force: true do |t|
+    t.integer  "bus_id"
+    t.string   "id_gps"
+    t.float    "ultima_latitud"
+    t.float    "ultima_logitud"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

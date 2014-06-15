@@ -1,0 +1,2 @@
+module GpsSHelper
+end

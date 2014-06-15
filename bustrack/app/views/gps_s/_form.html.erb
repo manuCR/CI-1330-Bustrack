@@ -1,0 +1,29 @@
+<%= form_for(@gps) do |f| %>
+  <% if @gps.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@gps.errors.count, "error") %> prohibited this gps from being saved:</h2>
+
+      <ul>
+      <% @gps.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id_gps %><br>
+    <%= f.text_field :id_gps %>
+  </div>
+  <div class="field">
+    <%= f.label :ultima_latitud %><br>
+    <%= f.text_field :ultima_latitud %>
+  </div>
+  <div class="field">
+    <%= f.label :ultima_logitud %><br>
+    <%= f.text_field :ultima_logitud %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

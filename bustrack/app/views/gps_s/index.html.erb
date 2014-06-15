@@ -1,0 +1,29 @@
+<h1>Listing gps_s</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id gps</th>
+      <th>Ultima latitud</th>
+      <th>Ultima logitud</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gps_s.each do |gps| %>
+      <tr>
+        <td><%= gps.id_gps %></td>
+        <td><%= gps.ultima_latitud %></td>
+        <td><%= gps.ultima_logitud %></td>
+        <td><%= link_to 'Show', gps %></td>
+        <td><%= link_to 'Edit', edit_gps_path(gps) %></td>
+        <td><%= link_to 'Destroy', gps, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gps', new_gps_path %>

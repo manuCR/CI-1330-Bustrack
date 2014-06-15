@@ -44,8 +44,8 @@ rp22.save
 
 #Crea dos buses y agrega cada uno a cada ruta
 
-b1 = Bus.create({placa: 'b-201'})
-b2 = Bus.create({placa: 'b-202'})
+b1 = Bus.create({placa: 'AB-201'})
+b2 = Bus.create({placa: 'SJB-202'})
 g1 = Gps.create({id_gps: '3a1bb1eb-be18-41db-9a2b-562506c86fef'})
 g2 = Gps.create({id_gps: 'cceed289-d438-41ed-a7e5-5e52c61ef1d0'})
 b1.gps = g1

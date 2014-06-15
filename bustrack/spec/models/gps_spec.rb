@@ -13,6 +13,12 @@ RSpec.describe Gps, :type => :model do
     b1.gps.id_gps.should == "adsfasdfasdf"
   end
 
+  it 'invalido con id_gps repetida' do
+    g = Gps.create(id_gps: "adsfasdfasdf")
+    g1 = Gps.create(id_gps: "adsfasdfasdf")
+    g1.should_not be_valid
+  end
+
   it 'agregar un bus con su gps a una ruta y validar la ruta' do
     r1 = Ruta.new(id: 1, nombre:"ruta1")
     b1 = Bus.new(id: 1,placa:"SJB-201")

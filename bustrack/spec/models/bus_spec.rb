@@ -31,6 +31,12 @@ RSpec.describe Bus, :type => :model do
     bus.should_not be_valid
   end
 
+  it 'invalido con placa repetida' do
+    bus = Bus.create(placa:"SJB-120")
+    bus1 = Bus.create(placa:"SJB-120")
+    bus1.should_not be_valid
+  end
+
   it 'agregar un bus a una ruta' do
     r1 = Ruta.new(id: 1, nombre:"ruta1")
     b1 = Bus.new(id: 1,placa:"SJB-201")

@@ -102,12 +102,6 @@ RSpec.describe ParadasController, :type => :controller do
         {"nombre" => "Extra", "latitud" => "15,5468555", "longitud" => "-20,5468555"}
       }
 
-      it "assigns the requested parada as @parada" do
-        parada = Parada.create! valid_attributes
-        put :update, {:id => parada.to_param, :parada => valid_attributes}, valid_session
-        expect(assigns(:parada)).to eq(parada)
-      end
-
       it "redirects to the parada" do
         parada = Parada.create! valid_attributes
         put :update, {:id => parada.to_param, :parada => valid_attributes}, valid_session

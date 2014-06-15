@@ -23,13 +23,9 @@ RSpec.describe GpsSController, :type => :controller do
   # This should return the minimal set of attributes required to create a valid
   # Gps. As you add validations to Gps, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) {{"id_gps" => "cceed289-d438-41ed-a7e5-5e52c61ef1d0"}}
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) {{"id_gps" => ""}}
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -102,16 +98,7 @@ RSpec.describe GpsSController, :type => :controller do
 
   describe "PUT update" do
     describe "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested gps" do
-        gps = Gps.create! valid_attributes
-        put :update, {:id => gps.to_param, :gps => new_attributes}, valid_session
-        gps.reload
-        skip("Add assertions for updated state")
-      end
+      let(:new_attributes) {{"id_gps" => "cambie"}}
 
       it "assigns the requested gps as @gps" do
         gps = Gps.create! valid_attributes

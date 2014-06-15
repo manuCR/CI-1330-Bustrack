@@ -29,4 +29,20 @@ RSpec.describe Ruta, :type => :model do
     r1.ruta_parada[0].tipo.should == 8
   end
 
+  it 'agregar un bus a una ruta' do
+    r1 = Ruta.new(id: 1, nombre:"ruta1")
+    b1 = Bus.new(id: 1,placa:"SJB-201")
+    r1.bus.push(b1)
+    r1.bus[0].placa.should == "SJB-201"
+  end
+
+  it 'agregar un bus con su gps a una ruta y validar el gps' do
+    r1 = Ruta.new(id: 1, nombre:"ruta1")
+    b1 = Bus.new(id: 1,placa:"SJB-201")
+    g1 = Gps.new(id: 1, id_gps: "adsfasdfasdf")
+    b1.gps = g1
+    r1.bus.push(b1)
+    r1.bus[0].gps.id_gps.should == "adsfasdfasdf"
+  end
+
 end

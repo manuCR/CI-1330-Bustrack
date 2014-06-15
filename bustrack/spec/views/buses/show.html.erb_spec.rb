@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "buses/show", :type => :view do
   before(:each) do
     @bus = assign(:bus, Bus.create!(
-      :placa => "Placa"
+      :placa => "SJB-201"
     ))
   end
 

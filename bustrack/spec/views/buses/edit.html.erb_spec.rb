@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "buses/edit", :type => :view do
   before(:each) do
     @bus = assign(:bus, Bus.create!(
-      :placa => "MyString"
+      :placa => "SJB-201"
     ))
   end
 

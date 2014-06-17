@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140615051217) do
+ActiveRecord::Schema.define(version: 20140617152119) do
 
   create_table "buses", force: true do |t|
     t.integer  "ruta_id"

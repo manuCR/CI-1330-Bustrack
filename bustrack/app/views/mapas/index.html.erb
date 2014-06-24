@@ -10,10 +10,6 @@
 		var busGranadilla2;
     var busPipiolo;
     var busExpreso;
-    var alerts = [ 
-    {num : 1, app:'helloworld',message:'message'},
-    {num : 2, app:'helloagain',message:'another message'} 
-]
 
 		var places = {
 		  "UCR-Cartago": {
@@ -159,7 +155,9 @@
 			var start;
 			var end;
 			console.log(places[from].location);
-// 			//en vez del from in places debe hacer consulta a la bd
+// 			//en vez del from in places debe hacer consulta a la bd < Parada.where(nombre: from ).take %> = from
+< Parada.all.each do |parada| >
+			var nom = "< parada.nombre >";
 			if (from in places) {
 				start = places[from].location;
 				

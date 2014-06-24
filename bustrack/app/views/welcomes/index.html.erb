@@ -30,16 +30,15 @@
 </div>
 
 <div id = "search">
-
-<input id="from" placeholder="desde" list="resultadosDelFrom"> </input>
-		<datalist id="resultadosDelFrom">
-			<% Parada.all.each do |parada| %>
-				<option value= <%= parada.nombre %> >
-			<% end %>
-		</datalist>
-
-<input name="to" placeholder="a" list="resultadosDelTo"> </input>
-			<datalist id="resultadosDelTo">
+				<br>
+				<br>
+				<br>
+				<%= select_tag "from", options_for_select(@paradas, "desde"), {:style => "min-width: 350px;"} %>
+				<br>
+				<br>
+				<br>
+				<input name="to" placeholder="a" list="resultadosDelTo"> </input>
+				<datalist id="resultadosDelTo">
 
 				<% Parada.all.each do |otra| %>
 						<option value= <%= otra.nombre %> >

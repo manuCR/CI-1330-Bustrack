@@ -1,4 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_rutas_usuario_path(@rutas_usuario) %> |
-<%= link_to 'Back', rutas_usuarios_path %>
+<div id="control_panel" style="float:left;width:20%;text-align:left;padding-top:20px">
+
+  <p id="notice"><%= notice %></p>
+
+  <% @ruta = @rutas_usuario.ruta %>
+
+  <p>
+    <% if @ruta != nil %>
+        <strong>Nombre:</strong>
+        <%= @ruta.nombre %>
+        </p>
+
+    <% end %>
+
+    <p>
+      <% if @ruta != nil %>
+          <strong>Usuario:</strong>
+          <%= @rutas_usuario.user.email %>
+          </p>
+
+      <% end %>
+
+      <%= link_to 'Edit', edit_rutas_usuario_path(@rutas_usuario) %> |
+      <%= link_to 'Back', rutas_usuarios_path %>

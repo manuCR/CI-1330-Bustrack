@@ -1,20 +1,28 @@
-<h1>Listing rutas_usuarios</h1>
+<h1>Listing Rutas favoritas</h1>
 
 <table>
   <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Nombre</th>
+
+    <th colspan="3"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @rutas_usuarios.each do |rutas_usuario| %>
-      <tr>
-        <td><%= link_to 'Show', rutas_usuario %></td>
-        <td><%= link_to 'Edit', edit_rutas_usuario_path(rutas_usuario) %></td>
-        <td><%= link_to 'Destroy', rutas_usuario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <% @rutas_usuarios.each do |rutas_usuario| %>
+      <% if current_user != nil && rutas_usuario.user != nil %>
+
+          <% if rutas_usuario.user.id == current_user.id %>
+              <td><%= rutas_usuario.ruta.nombre %></td>
+
+              <tr>
+                <td><%= link_to 'Destroy', rutas_usuario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+          <% end %>
+      <% end %>
+  <% end %>
+  <% #end %>
   </tbody>
 </table>
 

@@ -4,12 +4,17 @@
       <h2><%= pluralize(@rutas_usuario.errors.count, "error") %> prohibited this rutas_usuario from being saved:</h2>
 
       <ul>
-      <% @rutas_usuario.errors.full_messages.each do |message| %>
+      <% @rutas_usuarios.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
+
+  <div>
+    <%= f.label :rutas %>
+    <%= select_tag "ruta_favorita", options_from_collection_for_select(Ruta.all, :id, :nombre) %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>

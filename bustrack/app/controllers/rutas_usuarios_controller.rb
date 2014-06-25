@@ -24,29 +24,29 @@ class RutasUsuariosController < ApplicationController
   # POST /rutas_usuarios
   # POST /rutas_usuarios.json
   def create
-    @rutas_usuario = RutasUsuario.new(rutas_usuario_params)
+    #@rutas_usuario = RutasUsuario.new(rutas_usuario_params)
+    if current_user != nil
+      respond_to do |format|
+	    if params[:ruta_favorita] != ""
+        @ruta = Ruta.find(params[:ruta_favorita])
+        @user = current_user
+        @rutas_usuario = RutasUsuario.new(ruta:@ruta, user:@user)
+        #@favorita = Ruta.where(:id => params[:rutas])
+        #@favorita = Ruta.first.id
+        #@currentUser = current_user.id
+        #@rutas_usuario.user = current_user
+        #@rutas_usuario.ruta = Ruta.first
+        #RutasUsuario.create(ruta:Ruta.first, user:current_user)
+        #@current_user = User.find(session["user_id"])
+	    end
 
-    respond_to do |format|
       if @rutas_usuario.save
-        format.html { redirect_to @rutas_usuario, notice: 'Rutas usuario was successfully created.' }
+        format.html { redirect_to @rutas_usuario, notice: 'Ruta favorita agregada.' }
         format.json { render :show, status: :created, location: @rutas_usuario }
       else
         format.html { render :new }
         format.json { render json: @rutas_usuario.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /rutas_usuarios/1
-  # PATCH/PUT /rutas_usuarios/1.json
-  def update
-    respond_to do |format|
-      if @rutas_usuario.update(rutas_usuario_params)
-        format.html { redirect_to @rutas_usuario, notice: 'Rutas usuario was successfully updated.' }
-        format.json { render :show, status: :ok, location: @rutas_usuario }
-      else
-        format.html { render :edit }
-        format.json { render json: @rutas_usuario.errors, status: :unprocessable_entity }
       end
     end
   end

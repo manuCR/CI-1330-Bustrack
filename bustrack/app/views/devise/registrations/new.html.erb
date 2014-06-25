@@ -6,11 +6,23 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true %></div>
 
+  <div><%= f.label :nombre %><br />
+  <%= f.text_field :nombre %></div>
+
   <div><%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "off" %></div>
 
   <div><%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+
+  <div><%= f.label :ciudad %><br />
+  <%= f.text_field :ciudad %></div>
+
+  <div><%= f.label :fecha_de_Nacimiento, {:start_year => 1900, :end_year => 2050, :include_blank => true} %><br />
+  <%= f.date_select :fechaNac %></div>
+
+  <div><%= f.label :Administrador %><br />
+  <%= f.check_box :admin %></div>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>

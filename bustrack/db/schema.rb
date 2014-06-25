@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20140617152119) do
     t.string   "nombre"
     t.date     "fechaNac"
     t.string   "ciudad"
+    t.string   "admin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

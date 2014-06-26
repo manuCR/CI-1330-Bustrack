@@ -18,8 +18,8 @@
   <div><%= f.label :ciudad %><br />
   <%= f.text_field :ciudad %></div>
 
-  <div><%= f.label :fecha_de_Nacimiento, {:start_year => 1900, :end_year => 2050, :include_blank => true} %><br />
-  <%= f.date_select :fechaNac %></div>
+  <div><%= f.label :fecha_de_Nacimiento %><br />
+  <%= f.date_select :fechaNac , {:start_year => 1950, :end_year => Time.now.year, :include_blank => false}%></div>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>

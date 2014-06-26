@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :authentications
+
+  match '/auth/:provider/callback' => 'authentications#create', via: [:get, :post]
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :welcomes

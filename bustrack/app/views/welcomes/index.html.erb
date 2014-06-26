@@ -33,10 +33,7 @@
 				<br>
 				<br>
 				<br>
-				<!-- form_for @welcomes, builder: ComboboxFormBuilder do |f| %>
-    < f.combobox_tag(:browser, options_from_collection_for_select(@paradas,"id","nombre"), :list_id => "list")%>
- end -->
-				<%= select_tag "from", options_from_collection_for_select(@paradas,"id","nombre"), {:style => "min-width: 350px;"} %>
+				<%= select_tag "from", options_for_select(@paradas, "desde"), {:style => "min-width: 350px;"} %>
 				<br>
 				<br>
 				<br>

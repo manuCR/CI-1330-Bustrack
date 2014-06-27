@@ -14,27 +14,32 @@
 
 
 <ul>
-        <li><a href="#">Mi perfil</a></li>
         <% if user_signed_in? %>
-        <li>
-            <%= current_user.email %>
-        </li>
-        <li>
-            <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-        </li>
-          <% else %>
-        <li>
-              <%= link_to "Sign up", new_user_registration_path %>
-        </li>
-        <li>
-              <%= link_to "Sign in", new_user_session_path %>
-        </li>
+            <li>
+                <a href="#">Mi perfil</a>
+            </li>
+            <li>
+                <a href='rutas_usuarios'>Agregar Favorita</a>
+            </li>
+            <li>
+                <%= current_user.email %>
+            </li>
+            <li>
+                <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+            </li>
+        <% else %>
+            <li>
+                <%= link_to "Sign up", new_user_registration_path %>
+            </li>
+            <li>
+                <%= link_to "Sign in", new_user_session_path %>
+            </li>
 
-        <li>
-            <%= link_to "admin", "admin/login" %>
-        </li>
+            <li>
+                <%= link_to "admin", "admin/login" %>
+            </li>
 
-          <% end %>
+        <% end %>
 
 
 
@@ -49,7 +54,7 @@
         <li><a href="welcomes"><font color=#03374f><h2> Home</h></font></a></li>
         <li><a href='rutas'><font color=#03374f><h2> Rutas </h></font></a></li>
         <!--<li><a href='multiples_rutas'><font color=#03374f><h3> Rutas Multiples </h></font></a></li>-->
-		<!--<li><a href='rutas_usuarios'><font color=#03374f><h3> Agregar Ruta Favorita </h></font></a></li>-->
+
         <li><a href='mapas'><font color=#03374f><h2> Bustrack </h></font></a></li>
         <li> <input id="buscador" placeholder="buscar" list="resultadosDelSearch" style="width:120px;heigth:50"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</input> 
 																	<datalist id="resultadosDelSearch">

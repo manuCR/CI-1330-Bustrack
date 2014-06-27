@@ -2,13 +2,15 @@
 <html>
 <head>
   <title>Bustrack</title>
+  <link rel="shortcut icon" href="/assets/bus1.ico"/>
+  
   <%= stylesheet_link_tag    'welcome','application','token-input',  media: 'all', 'data-turbolinks-track' => true %>
  
   <%= javascript_include_tag 'application', 'jquery.tokeninput', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="pure-menu pure-menu-open pure-menu-horizontal" style="background-color:#424242;height: 32px;">
+<div class="pure-menu pure-menu-open pure-menu-horizontal" style="height:140px;">
 
 
 <ul>
@@ -32,18 +34,19 @@
 
 
 </ul>
-</div>
+<!--</div>-->
 
-<div class="pure-menu pure-menu-open pure-menu-horizontal" >
+<!--<div class="pure-menu pure-menu-open pure-menu-horizontal" >-->
 
-<div id="logo" style="width:0px; height:0px; z-index:5000"> <img src= "/assets/logo.png" width="90" height="90"> </div> <div style="width:0px; height:0px; z-index:5000; margin-left:150px"><img src= "/assets/slogan.png" width="150" height="55"></div>
+<div id="logo" style="width:0px; height:0px; z-index:5000"> <img src= "/assets/logo.jpg" width="220" height="135"> </div> 
     <ul>
 	
-        <li><a href="welcomes"><font size="4"> Home </font></a></li>
-        <li><a href='rutas'><font size="4"> Rutas </font></a></li>
-        <li><a href='multiples_rutas'><font size="4"> Rutas Multiples </font></a></li>
-        <li><a href="#"><font size="4"> Bustrack </font></a></li>
-        <li><a href="#"> <input id="buscador" placeholder="buscar" list="resultadosDelSearch" style="width:120px;heigth:50"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</input> 
+        <li><a href="welcomes"><font color=#03374f><h2> Home</h></font></a></li>
+        <li><a href='rutas'><font color=#03374f><h2> Rutas </h></font></a></li>
+        <!--<li><a href='multiples_rutas'><font color=#03374f><h3> Rutas Multiples </h></font></a></li>-->
+		<!--<li><a href='rutas_usuarios'><font color=#03374f><h3> Agregar Ruta Favorita </h></font></a></li>-->
+        <li><a href='mapas'><font color=#03374f><h2> Bustrack </h></font></a></li>
+        <li> <input id="buscador" placeholder="buscar" list="resultadosDelSearch" style="width:120px;heigth:50"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</input> 
 																	<datalist id="resultadosDelSearch">
 																		<% Ruta.all.each do |parada| %>
 																			<option value= <%= parada.nombre %> >

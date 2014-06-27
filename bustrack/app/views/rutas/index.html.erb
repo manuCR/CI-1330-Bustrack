@@ -1,7 +1,12 @@
-<h1>Listing rutas</h1>
+<div id="Rutas">
 
-<table>
-  <thead>
+<br>
+<h1 style="color:#f0c224">RUTAS</h1>
+<br>
+<br>
+<br>
+<table id="tablaRutas">
+  <!--<thead>
     <tr>
       <th>Nombre</th>
       <th>Paradas Inicial</th>
@@ -12,7 +17,7 @@
       <th>Paradas</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+  </thead>-->
 
   <tbody>
     <% @rutas.each do |ruta| %>
@@ -29,8 +34,8 @@
               <% @otras.push(ruta_parada.parada)%>
            <% end %>
         <% end %>
-        <td><%= ruta.nombre %></td>
-        <td>
+        <td><%= ruta.nombre %>&nbsp;&nbsp;&nbsp;<img src = "/assets/bus1.ico" align="right"></td>
+        <!--<td>
         <% if !@inicial.nil?%>
            <%= @inicial.nombre %>
         <% end %>
@@ -52,7 +57,7 @@
         </td>
         <td><%= link_to 'Show', ruta %></td>
         <td><%= link_to 'Edit', edit_ruta_path(ruta) %></td>
-        <td><%= link_to 'Destroy', ruta, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', ruta, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
     <% end %>
   </tbody>
@@ -61,3 +66,4 @@
 <br>
 
 <%= link_to 'New Ruta', new_ruta_path %>
+</div>

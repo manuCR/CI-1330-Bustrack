@@ -41,7 +41,7 @@
 <div id="logo" style="width:0px; height:0px; z-index:5000"> <img src= "/assets/logo.jpg" width="220" height="135"> </div> 
     <ul>
 	
-        <li><a href="welcomes"><font color=#03374f family="Helvetica"><h2> Home</h></font></a></li>
+        <li><a href="welcomes"><font color=#03374f><h2> Home</h></font></a></li>
         <li><a href='rutas'><font color=#03374f><h2> Rutas </h></font></a></li>
         <!--<li><a href='multiples_rutas'><font color=#03374f><h3> Rutas Multiples </h></font></a></li>-->
 		<!--<li><a href='rutas_usuarios'><font color=#03374f><h3> Agregar Ruta Favorita </h></font></a></li>-->

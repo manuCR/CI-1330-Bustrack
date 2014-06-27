@@ -14,21 +14,34 @@
 	
 	margin-left: 70px;
 	width: 15%;
+	height: 18%;
 	border-collapse: separate;
     border-spacing: 0.5em;
 }
 
 #tablaRutas tr:nth-child(n) {
-   background-color: red;
-   color:green;
+   background-color: #f0c224; /*amarillo*/
+   color:white;
    width: 20%;
 }
 
 
 
 #tablaRutas tr:nth-child(2n) {
-   background-color: blue;
-   color:purple;
+   background-color: #18344b; /*azul*/
+   color:white;
+   width: 20%;
+}
+
+#tablaRutas tr:nth-child(3n) {
+   background-color: #4ec3b1; /*celeste*/
+   color:white;
+   width: 20%;
+}
+
+#tablaRutas tr:nth-child(4n) {
+   background-color: #c11e30; /*rojo*/
+   color:white;
    width: 20%;
 }
 

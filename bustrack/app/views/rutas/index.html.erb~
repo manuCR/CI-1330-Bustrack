@@ -32,6 +32,7 @@
               <% @otras.push(ruta_parada.parada)%>
            <% end %>
         <% end %>
+        <td><%= ruta.nombre %>&nbsp;&nbsp;&nbsp;<img src = "/assets/bus1.ico" align="right"></td>
         <!--<td>
         <% if !@inicial.nil?%>
            <%= @inicial.nombre %>

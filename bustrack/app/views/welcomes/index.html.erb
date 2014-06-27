@@ -24,21 +24,18 @@
 </div>
 
 <div id = "search">
-				<br>
-				<br>
-				<br>
-				<%= select_tag "from", options_for_select(@paradas, "desde"), {:style => "min-width: 350px;"} %>
-				<br>
-				<br>
-				<br>
-				<input name="to" placeholder="a" list="resultadosDelTo"> </input>
-				<datalist id="resultadosDelTo">
-
-				<% Parada.all.each do |otra| %>
-						<option value= <%= otra.nombre %> >
-				<% end %>
-		</datalist>
-
+	<br>
+	<br>
+	<br>
+	<%= form_for :from, builder: ComboboxFormBuilder do |f| %>
+			<%= f.combobox_tag(:browser, options_from_collection_for_select(@paradas,"id","nombre"), :list_id => "list")%>
+	<% end %>
+	<br>
+	<br>
+	<br>
+	<%= form_for :from, builder: ComboboxFormBuilder do |f| %>
+			<%= f.combobox_tag(:browser, options_from_collection_for_select(@paradas,"id","nombre"), :list_id => "list")%>
+	<% end %>
 </div>
 <!-- from.value < Parada.attribute_names %>-->
 <!--<div id="logo" style="width=0px; height=0px"> <img src= "/assets/logo.png" width="60" height="60"></div>-->

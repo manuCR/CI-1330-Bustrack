@@ -37,7 +37,7 @@ position: absolute;
      height: 250px;
 	 z-index:500;
 	 position:relative;
-	 background-color: rgba(255, 255, 255, 0.5);
+	 background-color: rgba(3, 55, 79, 0.7);
 
 }
 
@@ -52,7 +52,7 @@ position: absolute;
 
 #logo{
 
-	 bottom:121%;
+	 bottom: 30px;
 	 left: 3%;
 	 width: 380px; 
      height: 250px;
@@ -78,7 +78,8 @@ position: absolute;
     z-index: 2;
     width: 100%;
     height: 40px;
-    text-align: right;
+    text-align: right; /*posicion del menu*/
+    
     
     
    	
@@ -145,6 +146,7 @@ position: absolute;
     float: right;
     /* These specific fonts have the Unicode char we need. */
     font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'DejaVu Sans', sans-serif;
+    
     margin-right: -20px;
     margin-top: -1px;
 }
@@ -157,7 +159,7 @@ position: absolute;
     background-color: #dfdfdf;
     display: block;
     height: 1px;
-    font-size: 0;
+    /*font-size: 0;*/
     margin: 7px 2px;
     overflow: hidden;
 }
@@ -184,6 +186,8 @@ position: absolute;
     zoom: 1;
     vertical-align: middle;
 }
+
+
 
 /* Submenus should still be display: block; */
 .pure-menu-horizontal li li {
@@ -221,7 +225,7 @@ position: absolute;
 
 .pure-menu.pure-menu-open,
 .pure-menu.pure-menu-horizontal li .pure-menu-children {
-    background: #070719; /* color del menu */ 
+    background: #FFFFFF; /* color del menu */ 
     border: 1px solid #b7b7b7;
 }
 
@@ -243,12 +247,12 @@ position: absolute;
 
 .pure-menu a,
 .pure-menu .pure-menu-can-have-children > li:after {
-    color: #CEF6EC; /* color de las letras */
+    color: #f0c224; /* color de las letras */
     
 }
 
 .pure-menu .pure-menu-can-have-children > li:hover:after {
-    color: #fff;
+    color: #fff; 
 }
 
 /* Focus style for a dropdown menu-item when the parent has been opened */
@@ -277,14 +281,14 @@ position: absolute;
 
 .pure-menu .pure-menu-disabled > a,
 .pure-menu .pure-menu-can-have-children.pure-menu-disabled > a:after {
-    color: #bfbfbf;
+    color: #bfbfbf; 
 }
 
 /* HEADINGS */
 .pure-menu .pure-menu-heading {
     color: #565d64;
     text-transform: uppercase;
-    font-size: 90%;
+    /*font-size: 100%;*/
     margin-top: 0.5em;
     border-bottom-width: 1px;
     border-bottom-style: solid;
@@ -293,7 +297,7 @@ position: absolute;
 
 /* ACTIVE MENU ITEM */
 .pure-menu .pure-menu-selected a {
-    color: #000;
+    color: red;  /*#000*/   
 }
 
 /* FIXED MENU */

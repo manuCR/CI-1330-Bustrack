@@ -15,7 +15,7 @@
 	margin-left: 70px;
 	width: 15%;
 	border-collapse: separate;
-    border-spacing: 0.5em;
+    border-spacing: 0.1em;
 }
 
 #tablaRutas tr:nth-child(n) {

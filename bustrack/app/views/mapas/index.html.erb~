@@ -10,10 +10,6 @@
 		var busGranadilla2;
     var busPipiolo;
     var busExpreso;
-    var alerts = [ 
-    {num : 1, app:'helloworld',message:'message'},
-    {num : 2, app:'helloagain',message:'another message'} 
-]
 
 		var places = {
 		  "UCR-Cartago": {
@@ -150,7 +146,8 @@
 	//Selecciona un punto inicial y un final, y dibuja la ruta de éste, de momento lo que tiene arriba es la definición de dos paradas
 	//UCR y San José, y elige la mejor ruta sin seguir ninguna condición. En vez de hacerlo así, después va a obtener las coordenadas
 //desde la BD y puede ser que al sacar la ruta de la base de datos, pueda sacar también las paradas para definir siempre la ruta establecida.
-	function searchToFrom(){
+	function searchToFrom(var value){
+	Console.log(value);
       var to = $('#to').val();
       var from = $('#from').val();
       
@@ -159,7 +156,9 @@
 			var start;
 			var end;
 			console.log(places[from].location);
-// 			//en vez del from in places debe hacer consulta a la bd
+// 			//en vez del from in places debe hacer consulta a la bd < Parada.where(nombre: from ).take %> = from
+< Parada.all.each do |parada| >
+			var nom = "< parada.nombre >";
 			if (from in places) {
 				start = places[from].location;
 				
@@ -206,49 +205,23 @@
 
 
 </script>
+
 <div  id="menu">
-  <ul>
-    <li><a href='#'><span>Home</span></a></li>
-    <li><a href='#'><span>Products</span></a>
-      <ul>
-        <li><a href='#'><span>Product 1</span></a>
-          <ul>
-            <li><a href='#'><span>Sub Item</span></a></li>
-            <li class='last'><a href='#'><span>Sub Item</span></a></li>
-          </ul>
-        </li>
-        <li><a href='#'><span>Product 2</span></a>
-          <ul>
-            <li><a href='#'><span>Sub Item</span></a></li>
-            <li><a href='#'><span>Vea</span></a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href='#'><span>About</span></a></li>
-    <li class='last'><a href='#'><span>Contact</span></a></li>
-  </ul>
   <br>
-
-  <p id="searchTo"> To: </a>
-  <input id="to" type="search" list="resultadosDelTo" size=10 />
-  
-    <datalist id="resultadosDelTo">
-			<% Parada.all.each do |parada| %>
-				<option value= <%= parada.nombre %> >
-			<% end %>
-		</datalist>
-
-  <p id="searchFrom"> From: </a>
-  <input id="from" type="search" list="resultadosDelFrom" size=10 /> 
-  <datalist id="resultadosDelFrom">
-			<% Parada.all.each do |otra| %>
-				<option value= <%= otra.nombre %> >
-			<% end %>
-		</datalist>
+  <br>
+	<font color=#ffffff><p> Desde: </h></font>
+	<%= form_for :from, builder: ComboboxFormBuilder do |g| %>
+			<%= g.combobox_tag(:browser, options_from_collection_for_select(@paradas,"nombre","nombre"), :list_id => "list")%>
+	<% end %>
+	<br>
+	<font color=#ffffff><p> A: </h></font>
+	<%= form_for :to, builder: ComboboxFormBuilder do |g| %>
+			<%= g.combobox_tag(:browser, options_from_collection_for_select(@paradas,"nombre","nombre"), :list_id => "list")%>
+	<% end %>
 	<br>
 	<br>
-	<input type="submit" onclick="searchToFrom()" value="Buscar">
+	<%= button_to_function "ejemplo", "alert('Just an example.')" %>
+
 
 </div>
 <div id="map-canvas" style="float:left;width:70%;height:100%;"></div>

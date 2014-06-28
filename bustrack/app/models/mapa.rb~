@@ -1,0 +1,15 @@
+class Mapa < ActiveRecord::Base
+
+def search
+  case params[:type]
+	when 'Alajuela'
+		search_Alajuela
+	end
+end
+
+private
+	def search_Alajuela
+		
+	end
+
+end

@@ -24,18 +24,17 @@
 </div>
 
 <div id = "search">
-				<br>
-				<br>
-				<br>
-				<%= form_for :from, builder: ComboboxFormBuilder do |f| %>
-    				<%= f.combobox_tag(:browser, options_from_collection_for_select(@paradas,"id","nombre"), :list_id => "list")%>
-				<% end %>
-				<br>
-				<br>
-				<br>
-				<%= form_for :from, builder: ComboboxFormBuilder do |f| %>
-    				<%= f.combobox_tag(:browser, options_from_collection_for_select(@paradas,"id","nombre"), :list_id => "list")%>
-				<% end %>
+	<br>
+	<font color=#ffffff><p> Desde: </h></font>
+	<%= form_for :from, builder: ComboboxFormBuilder do |f| %>
+			<%= f.combobox_tag(:browser, options_from_collection_for_select(@paradas,"nombre","nombre"), :list_id => "list")%>
+	<% end %>
+	<br>
+	<font color=#ffffff><p> A: </h></font>
+	<%= form_for :from, builder: ComboboxFormBuilder do |f| %>
+			<%= f.combobox_tag(:browser, options_from_collection_for_select(@paradas,"nombre","nombre"), :list_id => "list")%>
+	<% end %>
+	
 </div>
 <!-- from.value < Parada.attribute_names %>-->
 <!--<div id="logo" style="width=0px; height=0px"> <img src= "/assets/logo.png" width="60" height="60"></div>-->

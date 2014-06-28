@@ -5,13 +5,17 @@ class WelcomesController < ApplicationController
   # GET /welcomes.json
   def index
     @welcomes = Welcome.all
-		#@paradas = Parada.all
+		@paradas = Parada.all
   end
 
   # GET /welcomes/1
   # GET /welcomes/1.json
   def show
   end
+
+	def search
+    @mapa = Mapas.searchToFrom(params[:dir])
+	end
 
   # GET /welcomes/new
   def new

@@ -5,12 +5,14 @@ class MapasController < ApplicationController
   # GET /mapas.json
   def index
     @mapas = Mapa.all
+		@paradas = Parada.all
   end
 
   # GET /mapas/1
   # GET /mapas/1.json
   def show
   end
+
 
   # GET /mapas/new
   def new

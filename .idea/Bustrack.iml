@@ -24,7 +24,7 @@
     <orderEntry type="library" scope="PROVIDED" name="devise (v3.2.4, RVM: ruby-2.1.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.2.5, RVM: ruby-2.1.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubis (v2.7.0, RVM: ruby-2.1.1) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="execjs (v2.2.0, RVM: ruby-2.1.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="execjs (v2.2.1, RVM: ruby-2.1.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faraday (v0.9.0, RVM: ruby-2.1.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="formtastic (v2.3.0.rc3, RVM: ruby-2.1.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="has_scope (v0.6.0.rc, RVM: ruby-2.1.1) [gem]" level="application" />

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :mapas
   resources :multiples_rutas
   resources :rutas_usuarios
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => 'registrations'}
   resources :identities
   resources :buses
   resources :gps_s

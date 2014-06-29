@@ -2,7 +2,7 @@
 <!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 <!-- <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script> -->
 
-<script>
+<script> 
     var directionsDisplay;
     var directionsService;
     var map;
@@ -38,7 +38,10 @@
 		  console.log(places);*/
 		
 
-    // Initialize esta funcion coloca el mapa en la posicion de nuestra preferencia Latitud Longuitud y ademas podemos agregar el zoom incial
+		// Initialize esta funcion coloca el mapa en la posicion de nuestra preferencia Latitud Longuitud y ademas podemos agregar el zoom incial
+		
+
+
     function initialize() {
         directionsService = new google.maps.DirectionsService();
         directionsDisplay = new google.maps.DirectionsRenderer();
@@ -146,8 +149,7 @@
 	//Selecciona un punto inicial y un final, y dibuja la ruta de éste, de momento lo que tiene arriba es la definición de dos paradas
 	//UCR y San José, y elige la mejor ruta sin seguir ninguna condición. En vez de hacerlo así, después va a obtener las coordenadas
 //desde la BD y puede ser que al sacar la ruta de la base de datos, pueda sacar también las paradas para definir siempre la ruta establecida.
-	function searchToFrom(var value){
-	Console.log(value);
+	function searchToFrom(){
       var to = $('#to').val();
       var from = $('#from').val();
       
@@ -155,10 +157,7 @@
       var checkboxArray = [start, end];
 			var start;
 			var end;
-			console.log(places[from].location);
 // 			//en vez del from in places debe hacer consulta a la bd < Parada.where(nombre: from ).take %> = from
-< Parada.all.each do |parada| >
-			var nom = "< parada.nombre >";
 			if (from in places) {
 				start = places[from].location;
 				
@@ -217,10 +216,12 @@
 	<font color=#ffffff><p> A: </h></font>
 	<%= form_for :to, builder: ComboboxFormBuilder do |g| %>
 			<%= g.combobox_tag(:browser, options_from_collection_for_select(@paradas,"nombre","nombre"), :list_id => "list")%>
+			<%= valor = g.value %>
 	<% end %>
 	<br>
 	<br>
-	<%= button_to_function "ejemplo", "alert('Just an example.')" %>
+
+	<input type="submit" onclick="searchToFrom();">
 
 
 </div>

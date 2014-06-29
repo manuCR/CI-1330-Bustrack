@@ -69,6 +69,7 @@
       var map;
 
    function calcRoute() {
+   <%if !@inicial.nil? and !@final.nil?%>
 directionsDisplay = new google.maps.DirectionsRenderer();
           var mapOptions;
   directionsService = new google.maps.DirectionsService();
@@ -106,15 +107,30 @@ waypts.push({location:"<%= parada.latitud %>,<%= parada.longitud %>",stopover:tr
                   }
               }
           });
+          var myLatLng = new google.maps.LatLng(<%= @inicial.latitud %>, <%= @inicial.longitud %>);
+          var infowindow = new google.maps.InfoWindow({
+             content: 'Frecuencia: <%= @ruta.frecuencia %>\nPrecio: <%= @ruta.precio %>\nHorario: <%= @ruta.horario %>',
+             position: myLatLng
+           });
+           google.maps.event.addListener(map, 'click', function() {
+              infowindow.open(map);
+              map.setCenter(myLatLng);
+           });
+
       }
+
       function loadScript() {
          var script = document.createElement('script');
          script.type = 'text/javascript';
          script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
          'callback=calcRoute';
          document.body.appendChild(script);
+      <% end %>
       }
       $(document).ready(function () { loadScript() });
+
+
+
 </script>
 <div id="map-canvas" style="float:left;width:70%;height:100%;"></div>
 <div id="left_panel" style="float:left;width:10%;text-align:left;padding-top:20px"></div>

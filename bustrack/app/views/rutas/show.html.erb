@@ -14,6 +14,7 @@
 <% end %>
 
 
+
 <p>
   <strong>Nombre:</strong>
   <%= @ruta.nombre %>
@@ -62,11 +63,14 @@
 <%= link_to 'Back', rutas_path %>
 <div id="directions_panel" style="margin:20px;background-color:#FFEE77;"></div>
 </div>
-
+<script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
 <script>
+
       var directionsDisplay;
       var directionsService;
       var map;
+      var bus = [];
+
 
    function calcRoute() {
    <%if !@inicial.nil? and !@final.nil?%>
@@ -116,6 +120,15 @@ waypts.push({location:"<%= parada.latitud %>,<%= parada.longitud %>",stopover:tr
               infowindow.open(map);
               map.setCenter(myLatLng);
            });
+<% @gps = [] %>
+<% @ruta.bus.each do |bus| %>
+   <% @gps.push(bus.gps)%>
+           bus[<%= bus.gps.id%>] = new google.maps.Marker({
+              position: new google.maps.LatLng(0, 0.<%= bus.gps.id%>),
+              map: map,
+              title:"<%= bus.placa%>"
+           });
+<% end %>
 
       }
 
@@ -128,6 +141,23 @@ waypts.push({location:"<%= parada.latitud %>,<%= parada.longitud %>",stopover:tr
       <% end %>
       }
       $(document).ready(function () { loadScript() });
+      var firebaseRef = new Firebase('https://blazing-fire-9075.firebaseio.com');
+      firebaseRef.on('child_changed', function(snapshot) {
+         var message = snapshot.val();
+         var device = message.GpsID;
+         var location = message.Location;
+         var tokens = location.split(" ");
+         var mylat = tokens[0];
+         var mylong = tokens[1];
+         var myLatlng = new google.maps.LatLng(mylat,mylong);
+         switch (device) {
+<% @gps.each do |gps| %>
+             case '<%=gps.id_gps%>':
+                 bus[<%= gps.id%>].setPosition(myLatlng);
+                 break;
+         }	
+<% end %>
+      });
 
 
 

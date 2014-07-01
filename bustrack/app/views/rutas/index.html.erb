@@ -38,6 +38,13 @@
            <% end %>
         <% end %>
         <td><%= ruta.nombre %>&nbsp;&nbsp;&nbsp;<img src = "/assets/bus1.ico" align="right"></td>
+		
+		<% if  admin_user_signed_in? %>
+			<td><%= link_to 'Show', ruta %></td>
+			<td><%= link_to 'Edit', edit_ruta_path(ruta) %></td>
+			<td><%= link_to 'Destroy', ruta, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<% end %>
+		
         <!--<td>
         <% if !@inicial.nil?%>
            <%= @inicial.nombre %>

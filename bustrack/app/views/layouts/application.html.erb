@@ -62,9 +62,15 @@
     <ul>
 	
         <li><a href="welcomes"><font color=#03374f><h2> Home</h></font></a></li>
-        <li><a href='rutas'><font color=#03374f><h2> Rutas </h></font></a></li>
+		<% if admin_user_signed_in? %>
+			<li><a href='paradas'><font color=#03374f><h2> Paradas </h></font></a></li>
+			<li><a href='buses'><font color=#03374f><h2> Buses </h></font></a></li>
+			<li><a href='gps_s'><font color=#03374f><h2> Gps </h></font></a></li>
+			<li><a href='mapas'><font color=#03374f><h2> Mapas </h></font></a></li>
+			
+		<% end %>
         <!--<li><a href='multiples_rutas'><font color=#03374f><h3> Rutas Multiples </h></font></a></li>-->
-
+		<li><a href='rutas'><font color=#03374f><h2> Rutas </h></font></a></li>
         <li><a href='mapas'><font color=#03374f><h2> Bustrack </h></font></a></li>
         <li> <input id="buscador" placeholder="buscar" list="resultadosDelSearch" style="width:120px;heigth:50"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</input> 
 																	<datalist id="resultadosDelSearch">

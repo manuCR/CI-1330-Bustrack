@@ -27,9 +27,9 @@
 
 <div id = "search">
 	<br>
-	<font color=#ffffff><p> Desde: </h></font>
+	<font color=#ffffff><p style="margin-left:20px"> Desde: </h></font>
 	<%= form_for :from, builder: ComboboxFormBuilder do |f| %>
-			<%= f.combobox_tag(:browser, options_from_collection_for_select(@paradas,"nombre","nombre"), :list_id => "list")%>
+			<%= f.combobox_tag(:browser, options_from_collection_for_select(@paradas,"nombre","nombre"), :list_id => "list",:style=>"margin-left:20px")%>
 	<% end %>
 	<br>
 	<font color=#ffffff><p> A: </h></font>

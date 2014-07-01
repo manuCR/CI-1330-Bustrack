@@ -121,4 +121,49 @@ h1
     text-align:center;
 }
 
+#Rutas {
+
+	background-image: url(/assets/25469.jpg);
+	background-size:100% 500px;
+	 width: 100%;
+	 height: 500px;
+}
+
+#tablaRuta {
+	
+	margin-left: 100px;
+	width: 15%;
+	height: 18%;
+	border-collapse: separate;
+    border-spacing: 0.5em;
+}
+
+#tablaRuta tr:nth-child(n) {
+   background-color: #f0c224; /*amarillo*/
+   color:white;
+   width: 20%;
+}
+
+
+
+#tablaRuta tr:nth-child(2n) {
+   background-color: #18344b; /*azul*/
+   color:white;
+   width: 20%;
+}
+
+#tablaRuta tr:nth-child(3n) {
+   background-color: #4ec3b1; /*celeste*/
+   color:white;
+   width: 20%;
+}
+
+#tablaRuta tr:nth-child(4n) {
+   background-color: #c11e30; /*rojo*/
+   color:white;
+   width: 20%;
+}
+
+
+
 

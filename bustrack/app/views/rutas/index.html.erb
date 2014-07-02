@@ -17,7 +17,7 @@
       <tr>
         <td><%=ruta.nombre%>
             <%= link_to ruta do %>
-               <%= image_tag "/assets/bus1.ico"%>
+               <%= image_tag "/assets/bus1.ico", align:"right"%>
             <% end %></td>
 		<% if  admin_user_signed_in? %>
 			<td><%= link_to 'Show', ruta %></td>

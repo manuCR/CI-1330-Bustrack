@@ -1,12 +1,11 @@
-<h2>Sign in</h2>
+<div id= "SingIn">
+
+	<div align="center" style="background-color: rgba(255, 255, 255, 0.7);color:#18344b;width:300px;height:300px;margin-left:500px;z-index:5000">
+<img src="/assets/signin.png" height="64" width="64" style="margin-top:10px">
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-    <a href="/auth/twitter" class="auth_provider">
-      <%= image_tag "https://raw.githubusercontent.com/intridea/authbuttons/master/png/twitter_32.png", :size => "32x32", :alt => "Twitter" %></a>
-    <a href="/auth/facebook" class="auth_provider">
-      <%= image_tag "https://raw.githubusercontent.com/intridea/authbuttons/master/png/facebook_32.png", :size => "32x32", :alt => "Facebook" %></a>
-
+    
   <div><%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true %></div>
 
@@ -20,4 +19,13 @@
   <div><%= f.submit "Sign in" %></div>
 <% end %>
 
+
 <%= render "devise/shared/links" %>
+
+<a href="/auth/twitter" class="auth_provider">
+      <%= image_tag "https://raw.githubusercontent.com/intridea/authbuttons/master/png/twitter_32.png", :size => "32x32", :alt => "Twitter" %></a>
+    <a href="/auth/facebook" class="auth_provider">
+      <%= image_tag "https://raw.githubusercontent.com/intridea/authbuttons/master/png/facebook_32.png", :size => "32x32", :alt => "Facebook" %></a>
+
+	</div>
+</div>

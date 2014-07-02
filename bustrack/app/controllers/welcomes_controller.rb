@@ -52,6 +52,18 @@ class WelcomesController < ApplicationController
     end
   end
 
+	def mapa
+      if params[:bDesde] != nil
+			  @valorInicial = params[:bDesde]
+      else
+			  @valorInicial = "vacio"
+			end
+			@valorFinal = params[:bA]
+
+
+
+	end
+
   # DELETE /welcomes/1
   # DELETE /welcomes/1.json
   def destroy
@@ -72,4 +84,5 @@ class WelcomesController < ApplicationController
     def welcome_params
       params[:welcome]
     end
+
 end

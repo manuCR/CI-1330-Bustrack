@@ -27,20 +27,35 @@
 
 <div id = "search">
 	<br>
-	<font color=#ffffff><p style="margin-left:20px"> Desde: </h></font>
-	<%= form_for :from, builder: ComboboxFormBuilder do |f| %>
-			<%= f.combobox_tag(:browser, options_from_collection_for_select(@paradas,"nombre","nombre"), :list_id => "list",:style=>"margin-left:20px")%>
-	<% end %>
 	<br>
-	<font color=#ffffff><p> A: </h></font>
-	<%= form_for :to, builder: ComboboxFormBuilder do |f| %>
-			<%= f.combobox_tag(:browser, options_from_collection_for_select(@paradas,"nombre","nombre"), :list_id => "list")%>
-	<% end %>
+	<input id="bDesde" name="bDesde" placeholder="Desde" list="resultadosDelSearch" style="width:300px;heigth:60" > </input> 
+		<datalist id="resultadosDelSearch">
+			<% Ruta.all.each do |parada| %>
+				<option value= <%= parada.nombre %> >
+			<% end %>
+		</datalist>
+	<br>
+	<input id="bA" name="bA" placeholder="A" list="resultadosDelSearch" style="width:300px;heigth:60" > </input> 
+		<datalist id="resultadosDelSearch">
+			<% Ruta.all.each do |parada| %>
+				<option value= <%= parada.nombre %> >
+			<% end %>
+		</datalist>
+	<br>
+	<br>
+	&nbsp;&nbsp;&nbsp;<%= link_to "Buscar", controller: "welcomes/mapa", action: "mapa" %>
+
+	<script>
+		function busca(){
+			alert(bDesde.value);
+		}
+	</script>
 	
 </div>
 
 
-<!-- from.value < Parada.attribute_names %>-->
+<!-- from.value < Parada.attribute_names %> < form_for :from, builder: ComboboxFormBuilder do |f| %>
+			< f.combobox_tag(:browser, options_from_collection_for_select(@paradas,"nombre","nombre"), :list_id => "list",:style=>"margin-left:20px")%>-->
 <!--<div id="logo" style="width=0px; height=0px"> <img src= "/assets/logo.png" width="60" height="60"></div>-->
 
 <script>

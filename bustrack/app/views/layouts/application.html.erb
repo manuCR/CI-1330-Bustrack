@@ -72,12 +72,18 @@
         <!--<li><a href='multiples_rutas'><font color=#03374f><h3> Rutas Multiples </h></font></a></li>-->
 		<li><a href='rutas'><font color=#03374f><h2> Rutas </h></font></a></li>
         <li><a href='mapas'><font color=#03374f><h2> Bustrack </h></font></a></li>
-        <li> <input id="buscador" placeholder="buscar" list="resultadosDelSearch" style="width:120px;heigth:50"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</input> 
+        <li> <input id="buscador" placeholder="buscar" list="resultadosDelSearch" style="width:120px;heigth:50" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</input> 
 																	<datalist id="resultadosDelSearch">
 																		<% Ruta.all.each do |parada| %>
 																			<option value= <%= parada.nombre %> >
 																		<% end %>
 																	</datalist>
+
+				<script>
+					function normalSearch(){
+						
+					}
+				</script>
 				</a></li>
 
     </ul>

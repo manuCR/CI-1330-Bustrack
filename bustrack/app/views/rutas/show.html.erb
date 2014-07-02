@@ -15,52 +15,23 @@
 
 
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @ruta.nombre %>
-</p>
+<table id= "tablaRuta">
+  <tbody>
+    <% @rutas = Ruta.all%>
+    <% @rutas.each do |ruta| %>
+             <td><%= ruta.nombre %>
+            <%= link_to ruta do %>
+               <%= image_tag "/assets/bus1.ico"%>
+            <% end %></td>
+		<% if  admin_user_signed_in? %>
+			<td><%= link_to 'Edit', edit_ruta_path(ruta) %></td>
+			<td><%= link_to 'Destroy', ruta, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<p>
-  <strong>Frecuencia:</strong>
-  <%= @ruta.frecuencia %>
-</p>
-
-<p>
-  <strong>Precio:</strong>
-  <%= @ruta.precio %>
-</p>
-
-<p>
-  <strong>Horario:</strong>
-  <%= @ruta.horario %>
-</p>
-
-<p>
-  <strong>Parada Inicial:</strong>
-  <% if !@inicial.nil?%>
-     <%= @inicial.nombre %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Parada Final:</strong>
-  <% if !@final.nil?%>
-     <%= @final.nombre %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Paradas:</strong>
-  <% if !@otras.nil?%>
-     <% @otras.each do |parada|%>
-        <%= parada.nombre %>-
-     <% end %>
-  <% end %>
-</p>
-
-
-<%= link_to 'Edit', edit_ruta_path(@ruta) %> |
-<%= link_to 'Back', rutas_path %>
 <div id="directions_panel" style="margin:20px;background-color:#FFEE77;"></div>
 </div>
 <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>

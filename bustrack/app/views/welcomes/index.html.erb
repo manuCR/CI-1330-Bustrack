@@ -23,11 +23,13 @@
     </div>
 </div>
 
+<div> <p id="slogan" align="right"><font size="7">"Dejá de correr detras del bus"</font></p></div>
+
 <div id = "search">
 	<br>
-	<font color=#ffffff><p> Desde: </h></font>
+	<font color=#ffffff><p style="margin-left:20px"> Desde: </h></font>
 	<%= form_for :from, builder: ComboboxFormBuilder do |f| %>
-			<%= f.combobox_tag(:browser, options_from_collection_for_select(@paradas,"nombre","nombre"), :list_id => "list")%>
+			<%= f.combobox_tag(:browser, options_from_collection_for_select(@paradas,"nombre","nombre"), :list_id => "list",:style=>"margin-left:20px")%>
 	<% end %>
 	<br>
 	<font color=#ffffff><p> A: </h></font>
@@ -36,6 +38,8 @@
 	<% end %>
 	
 </div>
+
+
 <!-- from.value < Parada.attribute_names %>-->
 <!--<div id="logo" style="width=0px; height=0px"> <img src= "/assets/logo.png" width="60" height="60"></div>-->
 
